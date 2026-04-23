@@ -367,3 +367,28 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Build directories
+build/
+*/build/
+out/
+
+# Dependencies (CMake FetchContent / CUDA deps)
+_deps/
+*/_deps/
+
+# CUDA / compilation
+*.cu.obj
+*.ptx
+*.cubin
+
+# Visual Studio generated 
+*.vcxproj*
+*.sln
+

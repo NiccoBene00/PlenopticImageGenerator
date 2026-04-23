@@ -2,9 +2,11 @@
 #include <array>
 #include <cmath>
 
-//Converts Euler XYZ degrees --> rotation matrix
+//Converts Euler XYZ degrees --> rotation matrix R = Rz * Ry * Rx
+
 
 inline std::array<std::array<float,3>,3> eulerXYZtoMatrix(const std::array<float,3>& rotDeg) {
+    //conversion into rad since cos/sin work with rad
     float rx = rotDeg[0] * M_PI / 180.f;
     float ry = rotDeg[1] * M_PI / 180.f;
     float rz = rotDeg[2] * M_PI / 180.f;
