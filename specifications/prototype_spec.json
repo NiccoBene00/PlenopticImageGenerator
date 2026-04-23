@@ -1,0 +1,15 @@
+{
+  "NAME":  "Default Master's Thesis Prototype Specification",
+  "DISPLAY": {
+    "RESOLUTION_X": 5120,
+    "RESOLUTION_Y": 2880,
+    "WIDTH_MM": 596.74,
+    "HEIGHT_MM": 335.66
+  },
+  "MICROLENS_ARRAY": {
+    "TYPE": "RECT SQUARE",
+    "PITCH_MM": 1.6056,
+    "FOCAL_LENGTH_MM": 8.028,
+    "MLA_DISTANCE_MM": 16.056
+  }
+}

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\_deps\json-subbuild\CMakeFiles\5efb50350c488888800b6fa218d822c5\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{2F0B6024-ED7B-3333-A766-55119CBD2C2B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

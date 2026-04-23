@@ -1,0 +1,10 @@
+{
+  "NAME": "bonsai",
+  "IMAGE_PATH": "datasets/single_view/bonsai.png",
+  "DEPTH_PATH": "datasets/single_view/bonsai.exr",
+  "DEPTH_ENCODING": "FLOAT_METRIC",
+  "CAMERA_FX_px": 2666.66,
+  "CAMERA_FY_px": 1500,
+  "CAMERA_PX_px": 960,
+  "CAMERA_PY_px": 540
+}

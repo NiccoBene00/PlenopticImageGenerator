@@ -1,0 +1,20 @@
+{
+    "camera_1": {
+        "position_mm": [-5.0, 0.0, 24.0],
+        "rotation_xyz_deg": [0.0, -6.0, 0.0],
+        "focal_length_px": 2666.67,
+        "principal_point_px": [960.0, 540.0]
+    },
+    "camera_2": {
+        "position_mm": [5.0, 0.0, 24.0],
+        "rotation_xyz_deg": [0.0, 10.0, 0.0],
+        "focal_length_px": 2666.67,
+        "principal_point_px": [960.0, 540.0]
+    },
+    "camera_3": {
+        "position_mm": [0.0, 0.0, 24.0],
+        "rotation_xyz_deg": [0.0, 0.0, 0.0],
+        "focal_length_px": 2666.67,
+        "principal_point_px": [960.0, 540.0]
+    }
+}

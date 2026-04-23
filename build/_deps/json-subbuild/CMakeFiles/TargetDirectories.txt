@@ -1,0 +1,3 @@
+D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/_deps/json-subbuild/CMakeFiles/json-populate.dir
+D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/_deps/json-subbuild/CMakeFiles/ALL_BUILD.dir
+D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/_deps/json-subbuild/CMakeFiles/ZERO_CHECK.dir

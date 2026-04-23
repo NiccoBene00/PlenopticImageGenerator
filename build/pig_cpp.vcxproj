@@ -1,0 +1,518 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9341F772-3D41-3134-ABC9-2AB88EFC9F43}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>pig_cpp</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 12.2.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">pig_cpp.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">pig_cpp</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <LocalDebuggerEnvironment Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">PATH=%PATH%;D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/lib/opencv-4.12.0/build/x64/vc16/bin</LocalDebuggerEnvironment>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pig_cpp.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pig_cpp</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <LocalDebuggerEnvironment Condition="'$(Configuration)|$(Platform)'=='Release|x64'">PATH=%PATH%;D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/lib/opencv-4.12.0/build/x64/vc16/bin</LocalDebuggerEnvironment>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">pig_cpp.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">pig_cpp</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <LocalDebuggerEnvironment Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">PATH=%PATH%;D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/lib/opencv-4.12.0/build/x64/vc16/bin</LocalDebuggerEnvironment>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">pig_cpp.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">pig_cpp</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+    <LocalDebuggerEnvironment Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">PATH=%PATH%;D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/lib/opencv-4.12.0/build/x64/vc16/bin</LocalDebuggerEnvironment>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\eigen-3.4.1;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\_deps\json-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/Users/INFO-H-503/Documents/NiccoloBenedetto/lib/opencv/install/include" /external:I "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.2/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;PROJECT_ROOT_DIR="D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main";OPENCV_IO_ENABLE_OPENEXR=1;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;PROJECT_ROOT_DIR=\"D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main\";OPENCV_IO_ENABLE_OPENEXR=1;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\eigen-3.4.1;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\_deps\json-src\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <CudaCompile>
+      <Include>D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\eigen-3.4.1;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\_deps\json-src\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\include;%(Include)</Include>
+      <Defines>%(Defines);_WINDOWS;PROJECT_ROOT_DIR="D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main";OPENCV_IO_ENABLE_OPENEXR=1;CMAKE_INTDIR="Debug"</Defines>
+      <AdditionalOptions>%(AdditionalOptions) -forward-unknown-to-host-compiler -std=c++20 -arch=native --expt-relaxed-constexpr -Xcompiler="/EHsc -Zi -Ob0"</AdditionalOptions>
+      <CodeGeneration></CodeGeneration>
+      <CompileOut>$(IntDir)%(Filename).obj</CompileOut>
+      <CudaRuntime>Static</CudaRuntime>
+      <GPUDebugInfo>false</GPUDebugInfo>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <Optimization>Od</Optimization>
+      <Runtime>MDd</Runtime>
+      <RuntimeChecks>RTC1</RuntimeChecks>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <TypeInfo>true</TypeInfo>
+      <UseHostInclude>false</UseHostInclude>
+      <Warning>W3</Warning>
+    </CudaCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\eigen-3.4.1;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\_deps\json-src\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_img_hash4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\lib\x64\cudart.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\lib\x64\cuda.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;cudadevrt.lib;cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.2/lib/x64;C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.2/lib/x64/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/Debug/pig_cpp.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/Debug/pig_cpp.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <CudaLink>
+      <AdditionalOptions>-forward-unknown-to-host-compiler -Wno-deprecated-gpu-targets -D_WINDOWS -Xcompiler="/W3 /GR /EHsc" -Xcompiler="-MDd  -Zi -Ob0 -Od /RTC1" -arch=native</AdditionalOptions>
+      <PerformDeviceLink>true</PerformDeviceLink>
+    </CudaLink>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\eigen-3.4.1;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\_deps\json-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/Users/INFO-H-503/Documents/NiccoloBenedetto/lib/opencv/install/include" /external:I "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.2/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PROJECT_ROOT_DIR="D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main";OPENCV_IO_ENABLE_OPENEXR=1;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PROJECT_ROOT_DIR=\"D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main\";OPENCV_IO_ENABLE_OPENEXR=1;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\eigen-3.4.1;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\_deps\json-src\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <CudaCompile>
+      <Include>D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\eigen-3.4.1;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\_deps\json-src\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\include;%(Include)</Include>
+      <Defines>%(Defines);_WINDOWS;NDEBUG;PROJECT_ROOT_DIR="D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main";OPENCV_IO_ENABLE_OPENEXR=1;CMAKE_INTDIR="Release"</Defines>
+      <AdditionalOptions>%(AdditionalOptions) -forward-unknown-to-host-compiler -std=c++20 -arch=native --expt-relaxed-constexpr -Xcompiler="/EHsc -Ob2"</AdditionalOptions>
+      <CodeGeneration></CodeGeneration>
+      <CompileOut>$(IntDir)%(Filename).obj</CompileOut>
+      <CudaRuntime>Static</CudaRuntime>
+      <GPUDebugInfo>false</GPUDebugInfo>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <Optimization>O2</Optimization>
+      <Runtime>MD</Runtime>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <TypeInfo>true</TypeInfo>
+      <UseHostInclude>false</UseHostInclude>
+      <Warning>W3</Warning>
+    </CudaCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\eigen-3.4.1;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\_deps\json-src\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_img_hash4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\lib\x64\cudart.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\lib\x64\cuda.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;cudadevrt.lib;cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.2/lib/x64;C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.2/lib/x64/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/Release/pig_cpp.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/Release/pig_cpp.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <CudaLink>
+      <AdditionalOptions>-forward-unknown-to-host-compiler -Wno-deprecated-gpu-targets -D_WINDOWS -Xcompiler="/W3 /GR /EHsc" -Xcompiler="-MD -O2 -Ob2" -DNDEBUG -arch=native</AdditionalOptions>
+      <PerformDeviceLink>true</PerformDeviceLink>
+    </CudaLink>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\eigen-3.4.1;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\_deps\json-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/Users/INFO-H-503/Documents/NiccoloBenedetto/lib/opencv/install/include" /external:I "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.2/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PROJECT_ROOT_DIR="D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main";OPENCV_IO_ENABLE_OPENEXR=1;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PROJECT_ROOT_DIR=\"D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main\";OPENCV_IO_ENABLE_OPENEXR=1;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\eigen-3.4.1;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\_deps\json-src\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <CudaCompile>
+      <Include>D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\eigen-3.4.1;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\_deps\json-src\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\include;%(Include)</Include>
+      <Defines>%(Defines);_WINDOWS;NDEBUG;PROJECT_ROOT_DIR="D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main";OPENCV_IO_ENABLE_OPENEXR=1;CMAKE_INTDIR="MinSizeRel"</Defines>
+      <AdditionalOptions>%(AdditionalOptions) -forward-unknown-to-host-compiler -std=c++20 -arch=native --expt-relaxed-constexpr -Xcompiler="/EHsc -Ob1"</AdditionalOptions>
+      <CodeGeneration></CodeGeneration>
+      <CompileOut>$(IntDir)%(Filename).obj</CompileOut>
+      <CudaRuntime>Static</CudaRuntime>
+      <GPUDebugInfo>false</GPUDebugInfo>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <Optimization>O1</Optimization>
+      <Runtime>MD</Runtime>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <TypeInfo>true</TypeInfo>
+      <UseHostInclude>false</UseHostInclude>
+      <Warning>W3</Warning>
+    </CudaCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\eigen-3.4.1;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\_deps\json-src\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_img_hash4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\lib\x64\cudart.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\lib\x64\cuda.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;cudadevrt.lib;cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.2/lib/x64;C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.2/lib/x64/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/MinSizeRel/pig_cpp.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/MinSizeRel/pig_cpp.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <CudaLink>
+      <AdditionalOptions>-forward-unknown-to-host-compiler -Wno-deprecated-gpu-targets -D_WINDOWS -Xcompiler="/W3 /GR /EHsc" -Xcompiler="-MD -O1 -Ob1" -DNDEBUG -arch=native</AdditionalOptions>
+      <PerformDeviceLink>true</PerformDeviceLink>
+    </CudaLink>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\eigen-3.4.1;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\_deps\json-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/Users/INFO-H-503/Documents/NiccoloBenedetto/lib/opencv/install/include" /external:I "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.2/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PROJECT_ROOT_DIR="D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main";OPENCV_IO_ENABLE_OPENEXR=1;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PROJECT_ROOT_DIR=\"D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main\";OPENCV_IO_ENABLE_OPENEXR=1;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\eigen-3.4.1;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\_deps\json-src\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <CudaCompile>
+      <Include>D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\eigen-3.4.1;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\_deps\json-src\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\include;%(Include)</Include>
+      <Defines>%(Defines);_WINDOWS;NDEBUG;PROJECT_ROOT_DIR="D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main";OPENCV_IO_ENABLE_OPENEXR=1;CMAKE_INTDIR="RelWithDebInfo"</Defines>
+      <AdditionalOptions>%(AdditionalOptions) -forward-unknown-to-host-compiler -std=c++20 -arch=native --expt-relaxed-constexpr -Xcompiler="/EHsc -Zi -Ob1"</AdditionalOptions>
+      <CodeGeneration></CodeGeneration>
+      <CompileOut>$(IntDir)%(Filename).obj</CompileOut>
+      <CudaRuntime>Static</CudaRuntime>
+      <GPUDebugInfo>false</GPUDebugInfo>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <Optimization>O2</Optimization>
+      <Runtime>MD</Runtime>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <TypeInfo>true</TypeInfo>
+      <UseHostInclude>false</UseHostInclude>
+      <Warning>W3</Warning>
+    </CudaCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\eigen-3.4.1;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\_deps\json-src\include;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_img_hash4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\lib\x64\cudart.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\lib\x64\cuda.lib;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\opencv_world4120.lib;cudadevrt.lib;cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.2/lib/x64;C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.2/lib/x64/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/RelWithDebInfo/pig_cpp.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/RelWithDebInfo/pig_cpp.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <CudaLink>
+      <AdditionalOptions>-forward-unknown-to-host-compiler -Wno-deprecated-gpu-targets -D_WINDOWS -Xcompiler="/W3 /GR /EHsc" -Xcompiler="-MD  -Zi -O2 -Ob1" -DNDEBUG -arch=native</AdditionalOptions>
+      <PerformDeviceLink>true</PerformDeviceLink>
+    </CudaLink>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\bin\cmake.exe -SD:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main -BD:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build --check-stamp-file D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\OpenCVConfig-version.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\OpenCVConfig.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\OpenCVConfig.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\OpenCVModules-release.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\OpenCVModules.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\4.3.0\CMakeCUDACompiler.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\4.3.0\CMakeCXXCompiler.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\4.3.0\CMakeRCCompiler.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\4.3.0\CMakeSystem.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\cmake.verify_globs;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeCUDAInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeCXXInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeCommonLanguageInclude.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeGenericSystem.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeInitializeConfigs.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeLanguageInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeRCInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeSystemSpecificInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeSystemSpecificInitialize.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Compiler\MSVC-CXX.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Compiler\MSVC.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Compiler\NVIDIA-CUDA.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Compiler\NVIDIA.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\ExternalProject\shared_internal_commands.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FetchContent.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FetchContent\CMakeLists.cmake.in;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindCUDA.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindCUDA\select_compute_arch.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindCUDAToolkit.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindGit.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindPackageMessage.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Linker\MSVC-CXX.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Linker\MSVC.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Windows-Initialize.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Windows-MSVC.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Windows-NVIDIA-CUDA.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Windows.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\WindowsPaths.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\bin\cmake.exe -SD:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main -BD:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build --check-stamp-file D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\OpenCVConfig-version.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\OpenCVConfig.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\OpenCVConfig.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\OpenCVModules-release.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\OpenCVModules.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\4.3.0\CMakeCUDACompiler.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\4.3.0\CMakeCXXCompiler.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\4.3.0\CMakeRCCompiler.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\4.3.0\CMakeSystem.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\cmake.verify_globs;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeCUDAInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeCXXInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeCommonLanguageInclude.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeGenericSystem.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeInitializeConfigs.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeLanguageInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeRCInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeSystemSpecificInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeSystemSpecificInitialize.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Compiler\MSVC-CXX.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Compiler\MSVC.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Compiler\NVIDIA-CUDA.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Compiler\NVIDIA.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\ExternalProject\shared_internal_commands.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FetchContent.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FetchContent\CMakeLists.cmake.in;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindCUDA.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindCUDA\select_compute_arch.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindCUDAToolkit.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindGit.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindPackageMessage.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Linker\MSVC-CXX.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Linker\MSVC.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Windows-Initialize.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Windows-MSVC.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Windows-NVIDIA-CUDA.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Windows.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\WindowsPaths.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\bin\cmake.exe -SD:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main -BD:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build --check-stamp-file D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\OpenCVConfig-version.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\OpenCVConfig.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\OpenCVConfig.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\OpenCVModules-release.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\OpenCVModules.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\4.3.0\CMakeCUDACompiler.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\4.3.0\CMakeCXXCompiler.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\4.3.0\CMakeRCCompiler.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\4.3.0\CMakeSystem.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\cmake.verify_globs;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeCUDAInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeCXXInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeCommonLanguageInclude.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeGenericSystem.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeInitializeConfigs.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeLanguageInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeRCInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeSystemSpecificInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeSystemSpecificInitialize.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Compiler\MSVC-CXX.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Compiler\MSVC.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Compiler\NVIDIA-CUDA.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Compiler\NVIDIA.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\ExternalProject\shared_internal_commands.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FetchContent.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FetchContent\CMakeLists.cmake.in;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindCUDA.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindCUDA\select_compute_arch.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindCUDAToolkit.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindGit.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindPackageMessage.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Linker\MSVC-CXX.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Linker\MSVC.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Windows-Initialize.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Windows-MSVC.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Windows-NVIDIA-CUDA.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Windows.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\WindowsPaths.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\bin\cmake.exe -SD:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main -BD:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build --check-stamp-file D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\OpenCVConfig-version.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\OpenCVConfig.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\OpenCVConfig.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\OpenCVModules-release.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\lib\opencv\install\x64\vc17\lib\OpenCVModules.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\4.3.0\CMakeCUDACompiler.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\4.3.0\CMakeCXXCompiler.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\4.3.0\CMakeRCCompiler.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\4.3.0\CMakeSystem.cmake;D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\cmake.verify_globs;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeCUDAInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeCXXInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeCommonLanguageInclude.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeGenericSystem.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeInitializeConfigs.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeLanguageInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeRCInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeSystemSpecificInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\CMakeSystemSpecificInitialize.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Compiler\MSVC-CXX.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Compiler\MSVC.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Compiler\NVIDIA-CUDA.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Compiler\NVIDIA.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\ExternalProject\shared_internal_commands.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FetchContent.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FetchContent\CMakeLists.cmake.in;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindCUDA.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindCUDA\select_compute_arch.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindCUDAToolkit.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindGit.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\FindPackageMessage.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Linker\MSVC-CXX.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Linker\MSVC.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Windows-Initialize.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Windows-MSVC.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Windows-NVIDIA-CUDA.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\Windows.cmake;D:\Users\INFO-H-503\Documents\tools\cmake-4.3.0-windows-x86_64\share\cmake-4.3\Modules\Platform\WindowsPaths.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\main.cpp" />
+    <ClCompile Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\src\CameraCalibration.cpp" />
+    <ClCompile Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\src\pipeline\Pipeline.cpp" />
+    <ClCompile Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\src\pipeline\PipelineBenchmark.cpp" />
+    <ClCompile Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\src\pipeline\PipelineDataLoader.cpp" />
+    <ClCompile Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\src\pipeline\PipelineGPU.cpp" />
+    <ClCompile Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\src\pipeline\stages\PlenopticRendering.cpp" />
+    <ClCompile Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\src\pipeline\stages\PointCloudGeneration.cpp" />
+    <ClCompile Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\src\pipeline\stages\PointCloudGenerationGPU.cpp">
+      <ObjectFileName>$(IntDir)src/pipeline/stages/PointCloudGenerationGPU.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\src\pipeline\stages\PostProcessing.cpp" />
+    <ClCompile Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\src\pipeline\stages\PostProcessingGPU.cpp">
+      <ObjectFileName>$(IntDir)src/pipeline/stages/PostProcessingGPU.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\src\pipeline\stages\PreProcessing.cpp" />
+    <ClCompile Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\src\pipeline\stages\PreProcessingGPU.cpp">
+      <ObjectFileName>$(IntDir)src/pipeline/stages/PreProcessingGPU.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <CudaCompile Include="..\src\gpu\GPUConstants.cu" />
+    <CudaCompile Include="..\src\gpu\GPUPointCloud.cu" />
+    <CudaCompile Include="..\src\gpu\GPUUtils.cu" />
+    <CudaCompile Include="..\src\gpu\PointCloudGenerationGPU.cu">
+      <CompileOut>$(IntDir)src/gpu/PointCloudGenerationGPU.cu.obj</CompileOut>
+    </CudaCompile>
+    <CudaCompile Include="..\src\gpu\PostProcessingGPU.cu">
+      <CompileOut>$(IntDir)src/gpu/PostProcessingGPU.cu.obj</CompileOut>
+    </CudaCompile>
+    <CudaCompile Include="..\src\gpu\PreProcessingGPU.cu">
+      <CompileOut>$(IntDir)src/gpu/PreProcessingGPU.cu.obj</CompileOut>
+    </CudaCompile>
+    <CudaCompile Include="..\src\gpu\RenderingKernel.cu" />
+    <CudaCompile Include="..\src\gpu\RenderingLauncher.cu" />
+    <Natvis Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\_deps\json-src\nlohmann_json.natvis">
+    </Natvis>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\build\ZERO_CHECK.vcxproj">
+      <Project>{7A0A758E-CD5D-3E2A-B71A-7580F1518F3D}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 12.2.targets" />
+  </ImportGroup>
+</Project>

@@ -1,0 +1,10 @@
+# CMake generation dependency list for this directory.
+D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/_deps/json-src/CMakeLists.txt
+D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/_deps/json-src/cmake/config.cmake.in
+D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/_deps/json-src/cmake/nlohmann_jsonConfigVersion.cmake.in
+D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/_deps/json-src/cmake/pkg-config.pc.in
+D:/Users/INFO-H-503/Documents/tools/cmake-4.3.0-windows-x86_64/share/cmake-4.3/Modules/CMakePackageConfigHelpers.cmake
+D:/Users/INFO-H-503/Documents/tools/cmake-4.3.0-windows-x86_64/share/cmake-4.3/Modules/ExternalProject.cmake
+D:/Users/INFO-H-503/Documents/tools/cmake-4.3.0-windows-x86_64/share/cmake-4.3/Modules/ExternalProject/shared_internal_commands.cmake
+D:/Users/INFO-H-503/Documents/tools/cmake-4.3.0-windows-x86_64/share/cmake-4.3/Modules/GNUInstallDirs.cmake
+D:/Users/INFO-H-503/Documents/tools/cmake-4.3.0-windows-x86_64/share/cmake-4.3/Modules/WriteBasicConfigVersionFile.cmake

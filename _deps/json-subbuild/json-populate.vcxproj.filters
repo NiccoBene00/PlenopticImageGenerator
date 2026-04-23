@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\_deps\json-subbuild\CMakeFiles\8dd9bf168ad78ca3796ffab59912b54e\json-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\_deps\json-subbuild\CMakeFiles\8dd9bf168ad78ca3796ffab59912b54e\json-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\_deps\json-subbuild\CMakeFiles\8dd9bf168ad78ca3796ffab59912b54e\json-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\_deps\json-subbuild\CMakeFiles\8dd9bf168ad78ca3796ffab59912b54e\json-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\_deps\json-subbuild\CMakeFiles\8dd9bf168ad78ca3796ffab59912b54e\json-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\_deps\json-subbuild\CMakeFiles\8dd9bf168ad78ca3796ffab59912b54e\json-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\_deps\json-subbuild\CMakeFiles\8dd9bf168ad78ca3796ffab59912b54e\json-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\_deps\json-subbuild\CMakeFiles\8dd9bf168ad78ca3796ffab59912b54e\json-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\_deps\json-subbuild\CMakeFiles\20bf3fe41009e7f287db6367accc2c9a\json-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\_deps\json-subbuild\CMakeFiles\08d075d7190dc9dd20ef80545648b863\json-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\_deps\json-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\Users\INFO-H-503\Documents\NiccoloBenedetto\pig_cpp-main\_deps\json-subbuild\CMakeFiles\json-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{4749A39A-B396-3F16-9DDD-E17444AC8D8B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

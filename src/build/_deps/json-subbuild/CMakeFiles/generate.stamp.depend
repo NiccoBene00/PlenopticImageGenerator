@@ -1,0 +1,20 @@
+# CMake generation dependency list for this directory.
+D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/src/build/_deps/json-subbuild/CMakeFiles/4.3.0/CMakeSystem.cmake
+D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/src/build/_deps/json-subbuild/CMakeLists.txt
+D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/src/build/_deps/json-subbuild/json-populate-prefix/tmp/json-populate-mkdirs.cmake
+D:/Users/INFO-H-503/Documents/tools/cmake-4.3.0-windows-x86_64/share/cmake-4.3/Modules/CMakeGenericSystem.cmake
+D:/Users/INFO-H-503/Documents/tools/cmake-4.3.0-windows-x86_64/share/cmake-4.3/Modules/CMakeInitializeConfigs.cmake
+D:/Users/INFO-H-503/Documents/tools/cmake-4.3.0-windows-x86_64/share/cmake-4.3/Modules/CMakeSystemSpecificInformation.cmake
+D:/Users/INFO-H-503/Documents/tools/cmake-4.3.0-windows-x86_64/share/cmake-4.3/Modules/CMakeSystemSpecificInitialize.cmake
+D:/Users/INFO-H-503/Documents/tools/cmake-4.3.0-windows-x86_64/share/cmake-4.3/Modules/ExternalProject.cmake
+D:/Users/INFO-H-503/Documents/tools/cmake-4.3.0-windows-x86_64/share/cmake-4.3/Modules/ExternalProject/PatchInfo.txt.in
+D:/Users/INFO-H-503/Documents/tools/cmake-4.3.0-windows-x86_64/share/cmake-4.3/Modules/ExternalProject/RepositoryInfo.txt.in
+D:/Users/INFO-H-503/Documents/tools/cmake-4.3.0-windows-x86_64/share/cmake-4.3/Modules/ExternalProject/UpdateInfo.txt.in
+D:/Users/INFO-H-503/Documents/tools/cmake-4.3.0-windows-x86_64/share/cmake-4.3/Modules/ExternalProject/cfgcmd.txt.in
+D:/Users/INFO-H-503/Documents/tools/cmake-4.3.0-windows-x86_64/share/cmake-4.3/Modules/ExternalProject/gitclone.cmake.in
+D:/Users/INFO-H-503/Documents/tools/cmake-4.3.0-windows-x86_64/share/cmake-4.3/Modules/ExternalProject/gitupdate.cmake.in
+D:/Users/INFO-H-503/Documents/tools/cmake-4.3.0-windows-x86_64/share/cmake-4.3/Modules/ExternalProject/mkdirs.cmake.in
+D:/Users/INFO-H-503/Documents/tools/cmake-4.3.0-windows-x86_64/share/cmake-4.3/Modules/ExternalProject/shared_internal_commands.cmake
+D:/Users/INFO-H-503/Documents/tools/cmake-4.3.0-windows-x86_64/share/cmake-4.3/Modules/Platform/Windows-Initialize.cmake
+D:/Users/INFO-H-503/Documents/tools/cmake-4.3.0-windows-x86_64/share/cmake-4.3/Modules/Platform/Windows.cmake
+D:/Users/INFO-H-503/Documents/tools/cmake-4.3.0-windows-x86_64/share/cmake-4.3/Modules/Platform/WindowsPaths.cmake

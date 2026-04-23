@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/_deps/json-subbuild/CMakeFiles/json-populate"
+		},
+		{
+			"file" : "D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/_deps/json-subbuild/CMakeFiles/5efb50350c488888800b6fa218d822c5/json-populate.rule"
+		},
+		{
+			"file" : "D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/_deps/json-subbuild/CMakeFiles/c58f7742d27ca01d3e6abd8cae1697ee/json-populate-complete.rule"
+		},
+		{
+			"file" : "D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/_deps/json-subbuild/CMakeFiles/b4ca3bad8bbde95d37d6d97fe8a69b70/json-populate-build.rule"
+		},
+		{
+			"file" : "D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/_deps/json-subbuild/CMakeFiles/b4ca3bad8bbde95d37d6d97fe8a69b70/json-populate-configure.rule"
+		},
+		{
+			"file" : "D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/_deps/json-subbuild/CMakeFiles/b4ca3bad8bbde95d37d6d97fe8a69b70/json-populate-download.rule"
+		},
+		{
+			"file" : "D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/_deps/json-subbuild/CMakeFiles/b4ca3bad8bbde95d37d6d97fe8a69b70/json-populate-install.rule"
+		},
+		{
+			"file" : "D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/_deps/json-subbuild/CMakeFiles/b4ca3bad8bbde95d37d6d97fe8a69b70/json-populate-mkdir.rule"
+		},
+		{
+			"file" : "D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/_deps/json-subbuild/CMakeFiles/b4ca3bad8bbde95d37d6d97fe8a69b70/json-populate-patch.rule"
+		},
+		{
+			"file" : "D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/_deps/json-subbuild/CMakeFiles/b4ca3bad8bbde95d37d6d97fe8a69b70/json-populate-test.rule"
+		},
+		{
+			"file" : "D:/Users/INFO-H-503/Documents/NiccoloBenedetto/pig_cpp-main/build/_deps/json-subbuild/CMakeFiles/b4ca3bad8bbde95d37d6d97fe8a69b70/json-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"json-populate"
+		],
+		"name" : "json-populate"
+	}
+}
