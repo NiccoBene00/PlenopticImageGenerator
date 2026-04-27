@@ -1,0 +1,15 @@
+{
+  "NAME": "multi_ball",
+  "CAMERA_1": {
+    "IMAGE_PATH": "datasets/multi_view/camera_1.png",
+    "DEPTH_PATH": "datasets/multi_view/camera_1.exr"
+  },
+  "CAMERA_2": {
+    "IMAGE_PATH": "datasets/multi_view/camera_2.png",
+    "DEPTH_PATH": "datasets/multi_view/camera_2.exr"
+  },
+  "CAMERA_3": {
+    "IMAGE_PATH": "datasets/multi_view/camera_3.png",
+    "DEPTH_PATH": "datasets/multi_view/camera_3.exr"
+  }
+}

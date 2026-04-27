@@ -1,7 +1,8 @@
 # Optimization changes
 
 ## Notes
-
+===============================================================================================================================
+                                                ---FIRST PART---
 Phase 1
 I create a toggle system that is able to switch pipeline mode (previuous mode where only the rendering stage was on GPU and 
 the new one where we aim to bring each stage on GPU).
@@ -24,11 +25,23 @@ Phase 5
 Revising the post processing stage in order to improve the psnr factor.
 Optimization of the point cloud generation stage in order to improve the time performance.
 
-Phase 6
+===============================================================================================================================
+                                                ---SECOND PART---
+
+Phase 1
 I think how to implement the part two of the project: generating a plenoptic image starting from a multiview dataset
 (left and right view of the same scene).
 
+Phase 2
+I created a Camera Calibration class to read and store extrinsic and intrinsic parameters for multiple cameras from a json file. 
+
+Phase 3
+I extendent the existing single-view GPU point cloud generation pipeline by adding a new stage, the Multi View Point Cloud.
+
+
+
 ## Details
+                                                ---FIRST PART---
 
                                                 ---Phase 1---
 Now in ```main.cpp``` we can choose to perform between the previous pipeline and a new entire GPU pipeline based on
@@ -93,7 +106,9 @@ Only by applying this first step the time performance for this stage drop signif
 Then I tried other options like merging the mask and the projection kernels into only one kernel, and also reduce the number of memcpy by packing (X, Y, Z, px, py, colors) into a struct (ending with only one memcpy calls) but I gained only fewers milliseconds. So doing I achieved a mean time of ~130ms. In addition I marked the pointer in the kernel as ```__restrict__``` in order to say to the compiler to don't overlap these pointers and activate the caching. Time performance doesn't improve anymore.
 *This might means the computation wasn't the problem, but memory allocation was. Now we are memory-bound*. 
 
-                                                ---Phase 6---
+                                                ---SECOND PART---
+
+                                                ---Phase 1---
 Here the precise assignement consists of merging point clouds from three cameras while preserving geometric consistency and reducing duplicates.
 I thought about the following roadmap:
     - get position, rotation, and intrinsics for each camera (```CameraCalibration.hpp``` and ```CameraCalibration.cpp```);
@@ -109,3 +124,9 @@ I thought about the following roadmap:
     - eliminate points that are at the same position within a small tolerance (e.g., 1e-5) like Brenno suggested;
     Possible algorithms? Do I need to scan always each points??
     - re-run post processing stage?
+
+                                                ---Phase 2---
+Each camera contains its 3D position in millimeters, rotation in Euler angles (XYZ, degrees), focal length in pixels, and principal point. The class (```CameraCalibration.hpp``` and ```CameraCalibration.cpp```) parses the JSON, stores the data in a struct, and provides methods to retrieve the translation vector and rotation matrix for each camera. This ìmakes sure that each point cloud generated from a camera can be accurately transformed into a common global coordinate system.
+
+                                                ---Phase 3---
+I introduced ```MultiViewPointCloud.hpp```/```MultiViewPointCloud.cpp```. This phase is about just re-using the ```project2Dto3D()``` function in order to convert each depth map into a 3D point cloud. 

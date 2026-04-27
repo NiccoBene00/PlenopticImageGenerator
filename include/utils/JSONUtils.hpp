@@ -4,6 +4,7 @@
 #include <filesystem>
 #include <fstream>
 #include <string>
+#include <iostream>
 
 namespace fs = std::filesystem;
 
@@ -31,7 +32,6 @@ static std::optional<std::string> resolvePath(const std::string& filePath) {
 	// Relative: first try current working directory
 	if (fs::exists(p)) return p.make_preferred().string();
 
-	// Then try relative to project root
 	fs::path root(PROJECT_ROOT_DIR);
 	fs::path combined = root / p;
 	if (fs::exists(combined)) return combined.make_preferred().string();
