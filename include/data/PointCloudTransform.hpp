@@ -6,6 +6,7 @@
 //Helper function that applies Rotation Matrix 3x3 R and Translation Vector T 3x1 to all points in a PointCloud
 //MEANING: R represents the orientation of the camera
 //         T represents the position of the camera in the space
+
 inline void applyRigidTransform(PointCloud& ptCloud,
                                 const std::array<std::array<float,3>,3>& R,
                                 const std::array<float,3>& T)
