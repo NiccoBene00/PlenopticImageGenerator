@@ -56,7 +56,7 @@ inline bool loadMultiViewDataset(const std::string& folder, PipelineData& data) 
         data.dataset.datasetName      = "multi_view_dataset";
         data.dataset.rgbImagePath     = ""; // multi-view uses single file
         data.dataset.depthMapPath     = ""; 
-        data.dataset.depthEncoding    = DepthEncoding::FLOAT_METRIC; // default
+        data.dataset.depthEncoding    = DepthEncoding::FLOAT_METRIC;
         data.dataset.CAM_FX_px        = 2666.66;
         data.dataset.CAM_FY_px        = 1500; 
         data.dataset.CAM_PX_px        = 960;

@@ -75,7 +75,7 @@ __global__ void markDuplicateKernel(
             mask[j] = 0;
     }
     */
-    //take one ref point and make all other threads analyze this
+    //MAYBE should be better taking one ref point and make all other threads analyze this
 }
 
 // -------------------- HOST FUNCTIONS --------------------
@@ -159,7 +159,7 @@ bool mergeAndDeduplicate(PipelineData& data)
         offset += c.size();
     }
 
-    // Allocate GPU buffers
+    //GPU buffers
     float *d_X, *d_Y, *d_Z;
     unsigned char *d_mask;
     CUDA_CHECK(cudaMalloc(&d_X, totalPoints * sizeof(float)));
@@ -180,7 +180,7 @@ bool mergeAndDeduplicate(PipelineData& data)
     std::vector<unsigned char> mask(totalPoints);
     CUDA_CHECK(cudaMemcpy(mask.data(), d_mask, totalPoints * sizeof(unsigned char), cudaMemcpyDeviceToHost));
 
-    // Build merged cloud using preallocated arrays
+    // i build merged cloud using preallocated arrays
     size_t validCount = std::count(mask.begin(), mask.end(), 1);
     data.mergedCloud.X.resize(validCount);
     data.mergedCloud.Y.resize(validCount);
