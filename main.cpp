@@ -158,6 +158,7 @@ int main(int argc, char *argv[])
 #include <unordered_map>
 #include <string>
 #include <vector>
+#include <typeinfo>
 
 #include "pipeline/Pipeline.hpp"
 #include "pipeline/PipelineGPU.hpp"
@@ -258,6 +259,7 @@ int main(int argc, char* argv[])
 
     std::unique_ptr<Pipeline> pipeline;
 
+
     std::filesystem::path datasetPath(options.datasetParametersPath);
     if (std::filesystem::is_regular_file(datasetPath)) {
         // ---------- SINGLE VIEW ----------
@@ -274,19 +276,28 @@ int main(int argc, char* argv[])
         }
     } else if (std::filesystem::is_directory(datasetPath)) {
         // ---------- MULTI VIEW ----------
-        std::cout << "[MULTI-VIEW DATASET]\n";
+		std::cout << "\n";
+        std::cout << "[MULTI-VIEW DATASET]";
 
         if (!DataLoader::loadMultiViewDataset(datasetPath.string(), data)) {
-            std::cerr << "[MultiView] Failed to load multi-view dataset.\n";
+            std::cerr << "[MultiView] Failed to load multi-view dataset\n";
             return EXIT_FAILURE;
         }
 
+		std::cout << "\n";
         std::cout << "[GPU MULTI-VIEW PIPELINE]\n";
         pipeline = std::make_unique<PipelineMultiViewGPU>(spec, data.dataset, config, options.outputPath);
+		pipeline->setPipelineData(data);
     } else {
         std::cerr << "Dataset path does not exist: " << datasetPath.string() << "\n";
         return EXIT_FAILURE;
     }
+
+
+	if (!pipeline->setup()) {
+		std::cerr << "[ERROR] Pipeline setup failed\n";
+		return EXIT_FAILURE;
+	}
 
     pipeline->initialize();
 

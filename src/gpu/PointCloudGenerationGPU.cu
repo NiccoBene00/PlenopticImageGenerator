@@ -80,7 +80,7 @@ __global__ void computeMaskKernel(
     if (i >= N) return;
 
     float z = __ldg(&Z[i]);   // read-only cache
-    mask[i] = (z < bgVal) ? 1 : 0;
+    mask[i] = (z < bgVal) ? 0 : 1;
 }
 
 
@@ -170,15 +170,18 @@ bool project2Dto3D(PointCloud& ptCloud,
     auto t0 = std::chrono::high_resolution_clock::now();
 
     size_t N = ptCloud.Z.size();
-    std::cout << "Point Cloud Size:" << N << "\n";
+    std::cout << "[GPU] Point Cloud Size:" << N << "\n";
     if (N == 0) return false;
 
     float bgVal = ptCloud.getMaxZ();
+    //float bgVal = 1000.0f;
+
+    std::cout << "BGVAL value: " << bgVal << "\n";
 
     const int spResFactor = config.superResolutionFactor;
-    const float fxInv = 1.0f / (dataset.CAM_FX_px * spResFactor);
-    const float ppx = dataset.CAM_PX_px * spResFactor;
-    const float ppy = dataset.CAM_PY_px * spResFactor;
+    const float fxInv = 1.0f / (dataset.CAM_FX_px * 4);
+    const float ppx = dataset.CAM_PX_px * 4;
+    const float ppy = dataset.CAM_PY_px * 4;
 
     size_t fSize = N * sizeof(float);
     size_t u16Size = N * sizeof(uint16_t);
@@ -284,7 +287,7 @@ bool project2Dto3D(PointCloud& ptCloud,
         d_pxOut, d_pyOut, d_colOut,
         d_mask, d_scan,
         fxInv, ppx, ppy,
-        spResFactor,
+        4,
         N
     );
 

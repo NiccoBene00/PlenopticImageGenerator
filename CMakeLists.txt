@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(EIGEN_DIR "D:/Users/INFO-H-503/Documents/NiccoloBenedetto/lib/eigen-3.4.1")
 
 set(OpenCV_DIR "D:/Users/INFO-H-503/Documents/NiccoloBenedetto/lib/opencv/install")
-find_package(OpenCV REQUIRED)
+
 
 # Dependencies
 include(FetchContent)

@@ -1,10 +1,8 @@
 
 #include "pipeline/stages/PreProcessing.hpp"
-#include "pipeline/stages/PointCloudGeneration.hpp"
 #include "pipeline/stages/PlenopticRendering.hpp"
 #include "pipeline/stages/PostProcessingGPU.hpp"
 #include "pipeline/stages/PointCloudGenerationGPU.hpp"
-#include "pipeline/stages/MultiViewRegistration.hpp"
 #include "pipeline/stages/PreProcessingGPU.hpp"
 #include "pipeline/PipelineGPU.hpp"
 
@@ -29,4 +27,8 @@ void PipelineGPU::createDefaultStages() {
 
 void PipelineGPU::initialize() {
     createDefaultStages();
+}
+
+void PipelineGPU::setPipelineData(const PipelineData& data){
+    
 }

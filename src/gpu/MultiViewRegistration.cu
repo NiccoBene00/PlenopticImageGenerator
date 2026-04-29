@@ -8,6 +8,9 @@
 #include <cmath>
 #include <algorithm>
 
+//PIPELINE of this stage: (Point cloud per camera, coordinate camera) --> [transformKernel] := world coordinates
+//                          --> [merge] := unique cloud --> deduplicate := overlap removal
+
 #define CUDA_CHECK(call)                                           \
 do {                                                               \
     cudaError_t err = call;                                        \
@@ -36,6 +39,7 @@ __global__ void transformKernel(
     float yi = Y[i];
     float zi = Z[i];
 
+    //Rigid Transformation
     float Xnew = R[0]*xi + R[1]*yi + R[2]*zi + t[0];
     float Ynew = R[3]*xi + R[4]*yi + R[5]*zi + t[1];
     float Znew = R[6]*xi + R[7]*yi + R[8]*zi + t[2];
@@ -59,14 +63,19 @@ __global__ void markDuplicateKernel(
     float yi = Y[i];
     float zi = Z[i];
 
+    //here i check for each point i if the comparison with the point j and if the 
+    //AABB distance (cube) between them is smaller than a tolerance
+    /*
     for (size_t j = i + 1; j < N; ++j) {
-        if (!mask[j]) continue;
+        if (!mask[j]) continue; //more threads can overwirte here????
         float dx = fabs(xi - X[j]);
         float dy = fabs(yi - Y[j]);
         float dz = fabs(zi - Z[j]);
         if (dx <= tolerance && dy <= tolerance && dz <= tolerance)
             mask[j] = 0;
     }
+    */
+    //take one ref point and make all other threads analyze this
 }
 
 // -------------------- HOST FUNCTIONS --------------------
@@ -102,7 +111,7 @@ bool loadAndTransformPointClouds(PipelineData& data)
         float R[9];
         for(int r=0;r<3;r++)
             for(int c=0;c<3;c++)
-                R[3*r + c] = calib.rotationMatrix(r,c);
+                R[3*r + c] = calib.rotationMatrix(r,c); //conversion from Eigen to array flat structure GPU-ready
 
         float t[3] = { calib.position_mm[0], calib.position_mm[1], calib.position_mm[2] };
 
@@ -139,6 +148,8 @@ bool mergeAndDeduplicate(PipelineData& data)
     for (auto& c : data.multiViewClouds)
         totalPoints += c.size();
 
+
+    //here i compute cloud1 + cloud2 + cloud3 --> one unique array
     std::vector<float> X(totalPoints), Y(totalPoints), Z(totalPoints);
     size_t offset = 0;
     for (auto& c : data.multiViewClouds) {

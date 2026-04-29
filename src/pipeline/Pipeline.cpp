@@ -22,6 +22,7 @@ Pipeline::Pipeline(const SystemSpec& spec, const DatasetParameters& dataset, con
 	data.config = config;
 	data.outputPath = outputPath;
 
+	/*
 	if (!loadInputImages()) {
 		fail("Pipeline initialization failed");
 		return;
@@ -29,12 +30,31 @@ Pipeline::Pipeline(const SystemSpec& spec, const DatasetParameters& dataset, con
 
 	initializePlenopticImage();
 	//createDefaultStages();
+	*/
+}
+
+void Pipeline::setPipelineData(const PipelineData& data){
+
+}
+
+bool Pipeline::setup()
+{
+    if (!loadInputImages()) {
+        fail("Pipeline initialization failed");
+        return false;
+    }
+
+    initializePlenopticImage();
+    return true;
 }
 
 void Pipeline::initialize() {
-	createDefaultStages();
-}
+    if (status == PipelineStatus::FAILED) {
+        return;
+    }
 
+    createDefaultStages();
+}
 
 void Pipeline::createDefaultStages() {
 	stages.emplace_back(std::make_unique<PreProcessing>());

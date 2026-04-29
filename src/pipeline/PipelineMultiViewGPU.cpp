@@ -1,4 +1,3 @@
-#include "pipeline/PipelineMultiViewGPU.hpp"
 
 #include "pipeline/stages/PreProcessingGPU.hpp"
 #include "pipeline/stages/MultiViewPointCloud.hpp"
@@ -7,28 +6,45 @@
 #include "pipeline/stages/PostProcessingGPU.hpp"
 #include "pipeline/stages/PointCloudGenerationGPU.hpp"
 
+#include "pipeline/PipelineMultiViewGPU.hpp"
+
+
 PipelineMultiViewGPU::PipelineMultiViewGPU(const SystemSpec& spec,
                                            const DatasetParameters& dataset,
                                            const Config& config,
                                            const std::string& outputPath)
     : PipelineGPU(spec, dataset, config, outputPath)
 {
-    // Non chiamiamo createDefaultStages qui: lo facciamo separatamente
+
 }
+
+bool PipelineMultiViewGPU::setup()
+{
+
+    initializePlenopticImage();
+
+    return true;
+}
+
 
 void PipelineMultiViewGPU::createDefaultStages() {
     stages.clear();
 
     // Pre-processing GPU
-    stages.emplace_back(std::make_unique<PreProcessingGPU>());
+    //stages.emplace_back(std::make_unique<PreProcessingGPU>());
 
     // Multi-view point cloud generation
-    stages.emplace_back(std::make_unique<MultiViewPointCloud>(data.calibration));
+    stages.emplace_back(std::make_unique<MultiViewPointCloud>());
 
     // Multi-view registration
     stages.emplace_back(std::make_unique<MultiViewRegistration>());
 
     // Rendering e post-processing
     stages.emplace_back(std::make_unique<PlenopticRendering>());
-    stages.emplace_back(std::make_unique<PostProcessingGPU>());
+    //stages.emplace_back(std::make_unique<PostProcessingGPU>());
+}
+
+void PipelineMultiViewGPU::initialize() {
+    createDefaultStages();
+    
 }

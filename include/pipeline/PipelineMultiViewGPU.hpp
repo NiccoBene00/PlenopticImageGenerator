@@ -10,6 +10,13 @@ public:
                          const Config& config,
                          const std::string& outputPath);
 
+    void initialize() override;
+
+    void setPipelineData(const PipelineData& pipelineData) { this->data = pipelineData; }
+protected:
+    bool setup() override;
     // Override: crea le stage specifiche per multi-view
     void createDefaultStages() override;
+
+    
 };

@@ -40,9 +40,19 @@ public:
 
 	virtual void initialize();
 
+	virtual bool setup();
+
+	virtual void setPipelineData(const PipelineData& data);
+
 	PipelineStatus getStatus() const { return status; }
 	std::string getLastError() const { return lastErrorMessage; }
-	cv::Mat getPlenopticImage() const { if (status == PipelineStatus::COMPLETED && !data.plenopticImage.empty()) return data.plenopticImage; }
+
+	cv::Mat getPlenopticImage() const { 
+		if (status == PipelineStatus::COMPLETED && !data.plenopticImage.empty()) 
+			return data.plenopticImage;
+		return{};
+		}
+
 	std::vector<std::unique_ptr<PipelineStage>>& getStages() { return stages; }
 	double getPipelineDuration() const { return benchmark.getTotalDuration(); }
 
