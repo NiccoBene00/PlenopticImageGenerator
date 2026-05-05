@@ -80,7 +80,7 @@ __global__ void computeMaskKernel(
     if (i >= N) return;
 
     float z = __ldg(&Z[i]);   // read-only cache
-    mask[i] = (z < bgVal) ? 0 : 1;
+    mask[i] = (z < bgVal) ? 1 : 0;
 }
 
 
@@ -179,9 +179,9 @@ bool project2Dto3D(PointCloud& ptCloud,
     std::cout << "BGVAL value: " << bgVal << "\n";
 
     const int spResFactor = config.superResolutionFactor;
-    const float fxInv = 1.0f / (dataset.CAM_FX_px * 4);
-    const float ppx = dataset.CAM_PX_px * 4;
-    const float ppy = dataset.CAM_PY_px * 4;
+    const float fxInv = 1.0f / (dataset.CAM_FX_px * spResFactor);
+    const float ppx = dataset.CAM_PX_px * spResFactor;
+    const float ppy = dataset.CAM_PY_px * spResFactor;
 
     size_t fSize = N * sizeof(float);
     size_t u16Size = N * sizeof(uint16_t);
@@ -287,7 +287,7 @@ bool project2Dto3D(PointCloud& ptCloud,
         d_pxOut, d_pyOut, d_colOut,
         d_mask, d_scan,
         fxInv, ppx, ppy,
-        4,
+        spResFactor,
         N
     );
 

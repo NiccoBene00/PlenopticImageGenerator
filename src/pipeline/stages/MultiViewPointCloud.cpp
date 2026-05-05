@@ -2,6 +2,7 @@
 
 #include "pipeline/stages/MultiViewPointCloud.hpp"
 #include "gpu/PointCloudGenerationGPU.cuh"
+#include "pipeline/PipelineDataLoader.hpp"
 #include <opencv2/imgcodecs.hpp>
 #include <iostream>
 
@@ -60,8 +61,11 @@ bool MultiViewPointCloud::generatePointCloudsGPU(
                   << "\nDepth: " << depthPath << "\n";
 
         cv::Mat rgb   = cv::imread(rgbPath, cv::IMREAD_COLOR);
-        cv::Mat depth = cv::imread(depthPath, cv::IMREAD_UNCHANGED);
-
+        //cv::Mat depth = cv::imread(depthPath, cv::IMREAD_UNCHANGED);
+        PipelineDataLoader loader;
+        cv::Mat depth = loader.loadDepthMap(depthPath, data.dataset);
+        std::cout << "DEPTH CHANNELS: " << depth.channels() << std::endl;
+        
         if (rgb.empty()) {
             std::cerr << "[MultiViewPointCloud] Failed to load RGB: " << rgbPath << "\n";
             continue;

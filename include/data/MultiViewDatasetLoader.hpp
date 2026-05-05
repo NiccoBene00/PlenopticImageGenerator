@@ -72,6 +72,9 @@ inline bool loadMultiViewDataset(const std::string& folder, PipelineData& data) 
             std::cout << "[MultiViewDatasetLoader] Depth image size set to: "
                     << data.dataset.depthWidth << "x" << data.dataset.depthHeight << "\n";
         }
+
+        std::cout << "Depth Type: " << depthImg.type() << "\n";
+        std::cout << "Depth Channels: " << depthImg.channels() << std::endl;
     }
     std::cout << "========================================================\n";
     return true;

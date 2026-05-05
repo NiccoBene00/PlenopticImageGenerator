@@ -1,7 +1,9 @@
 
 #include "gpu/MultiViewRegistration.cuh"
+#include "gpu/PointCloudGenerationGPU.cuh"
 #include "data/CameraCalibration.hpp"
 #include "data/PipelineData.hpp"
+#include "gpu/GPUTypes.cuh"
 #include <cuda_runtime.h>
 #include <iostream>
 #include <vector>
@@ -151,11 +153,13 @@ bool mergeAndDeduplicate(PipelineData& data)
 
     //here i compute cloud1 + cloud2 + cloud3 --> one unique array
     std::vector<float> X(totalPoints), Y(totalPoints), Z(totalPoints);
+    std::vector<cv::Vec3b> colors(totalPoints);
     size_t offset = 0;
     for (auto& c : data.multiViewClouds) {
         std::copy(c.X.begin(), c.X.end(), X.begin() + offset);
         std::copy(c.Y.begin(), c.Y.end(), Y.begin() + offset);
         std::copy(c.Z.begin(), c.Z.end(), Z.begin() + offset);
+        std::copy(c.colors.begin(), c.colors.end(), colors.begin() + offset);
         offset += c.size();
     }
 
@@ -185,20 +189,33 @@ bool mergeAndDeduplicate(PipelineData& data)
     data.mergedCloud.X.resize(validCount);
     data.mergedCloud.Y.resize(validCount);
     data.mergedCloud.Z.resize(validCount);
+    data.mergedCloud.colors.resize(validCount);
 
     for (size_t idx = 0, out = 0; idx < totalPoints; ++idx) {
         if (mask[idx]) {
             data.mergedCloud.X[out] = X[idx];
             data.mergedCloud.Y[out] = Y[idx];
             data.mergedCloud.Z[out] = Z[idx];
+            data.mergedCloud.colors[out] = colors[idx];
             ++out;
         }
     }
 
+    
+    GPU::PointCloudGPU::adjustToSystem(
+        data.mergedCloud,
+        data.spec,
+        data.config
+    );
+    
+
     cudaFree(d_X); cudaFree(d_Y); cudaFree(d_Z);
     cudaFree(d_mask);
 
-    std::cout << "[GPU] Merged points count: " << data.mergedCloud.size() << "\n";
+
+    data.pointCloud = data.mergedCloud;
+    std::cout << "[GPU] Merged points count: " << data.pointCloud.size() << "\n";
+    std::cout << "[GPU] Merged points color count: " << data.pointCloud.colors.size() << "\n";
 
     return true;
 }
