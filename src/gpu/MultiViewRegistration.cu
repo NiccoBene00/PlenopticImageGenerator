@@ -13,6 +13,8 @@
 //PIPELINE of this stage: (Point cloud per camera, coordinate camera) --> [transformKernel] := world coordinates
 //                          --> [merge] := unique cloud --> deduplicate := overlap removal
 
+
+
 #define CUDA_CHECK(call)                                           \
 do {                                                               \
     cudaError_t err = call;                                        \
@@ -28,7 +30,20 @@ namespace MultiViewRegistration {
 
 // -------------------- CUDA KERNELS --------------------
 
-// Apply rigid transformation: X,Y,Z -> R*X + t
+/*
+This CUDA kernels applies the following logic:
+
+Input:
+- (X, Y, Z): point in camera coordinates
+- R: 3x3 rotation matrix
+- t: translation vector
+
+Output:
+- transformed point in world coordinates
+
+Formula:
+X_world = R * X_cam + t
+*/
 __global__ void transformKernel(
     float* X, float* Y, float* Z,
     const float* R, const float* t,
@@ -41,7 +56,7 @@ __global__ void transformKernel(
     float yi = Y[i];
     float zi = Z[i];
 
-    //Rigid Transformation
+    //Rigid Body Transformation
     float Xnew = R[0]*xi + R[1]*yi + R[2]*zi + t[0];
     float Ynew = R[3]*xi + R[4]*yi + R[5]*zi + t[1];
     float Znew = R[6]*xi + R[7]*yi + R[8]*zi + t[2];
@@ -82,6 +97,14 @@ __global__ void markDuplicateKernel(
 
 // -------------------- HOST FUNCTIONS --------------------
 
+/*
+For each camera:
+1. Take point cloud in camera coordinates
+2. Upload to GPU
+3. Apply extrinsic transformation (R, t)
+4. Convert all points into world coordinates
+*/
+
 bool loadAndTransformPointClouds(PipelineData& data)
 {
     if (data.multiViewClouds.size() != 3 || data.calibration.size() != 3) {
@@ -96,6 +119,9 @@ bool loadAndTransformPointClouds(PipelineData& data)
 
         // Get CameraInfo from CameraCalibration
         CameraInfo& calib = data.calibration[camIdx];
+
+        std::cout << "CAM POS: " << calib.position_mm[0] << ", " << calib.position_mm[1] << ", " <<
+                calib.position_mm[2] << "\n";
 
         size_t N = cloud.size();
         if(N == 0) continue;
@@ -114,8 +140,16 @@ bool loadAndTransformPointClouds(PipelineData& data)
         for(int r=0;r<3;r++)
             for(int c=0;c<3;c++)
                 R[3*r + c] = calib.rotationMatrix(r,c); //conversion from Eigen to array flat structure GPU-ready
+        
+            
+        //R transpose
+        float Rinv[9];
+        for(int r=0;r<3;r++)
+            for(int c=0;c<3;c++)
+                Rinv[3*r + c] = R[3*c + r];
 
-        float t[3] = { calib.position_mm[0], calib.position_mm[1], calib.position_mm[2] };
+
+        float t[3] = { calib.position_mm[0]/1000.0f, calib.position_mm[1]/1000.0f, calib.position_mm[2]/1000.0f };
 
         float *d_R, *d_t;
         CUDA_CHECK(cudaMalloc(&d_R, 9*sizeof(float)));
@@ -137,6 +171,13 @@ bool loadAndTransformPointClouds(PipelineData& data)
 
     return true;
 }
+
+/*
+Merge step:
+1. Concatenate all transformed point clouds
+2. Optionally remove duplicates (currently to finish)
+3. Build final unified point cloud
+*/
 
 bool mergeAndDeduplicate(PipelineData& data)
 {
@@ -207,6 +248,7 @@ bool mergeAndDeduplicate(PipelineData& data)
         data.spec,
         data.config
     );
+    
     
 
     cudaFree(d_X); cudaFree(d_Y); cudaFree(d_Z);

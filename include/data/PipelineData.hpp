@@ -22,7 +22,7 @@ struct PipelineData {
 	cv::Mat depthMap;
 	cv::Mat plenopticImage;
 
-	//// --- New fields for multi-view registration ---
+	// --- New fields for multi-view registration ---
 	std::vector<PointCloud> multiViewClouds;       // One cloud per camera
     std::vector<CameraInfo> calibration;    // Calibration per camera
     PointCloud mergedCloud;           
