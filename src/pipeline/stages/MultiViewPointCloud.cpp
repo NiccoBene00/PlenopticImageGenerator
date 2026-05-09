@@ -89,7 +89,7 @@ bool MultiViewPointCloud::generatePointCloudsGPU(
         //load rgb image
         cv::Mat rgb   = cv::imread(rgbPath, cv::IMREAD_COLOR);
 
-        //load depth image (BUG WAS HERE)
+        //load depth image (BUG WAS HERE!!!!!!!!!!)
         //cv::Mat depth = cv::imread(depthPath, cv::IMREAD_UNCHANGED);
         PipelineDataLoader loader;
         cv::Mat depth = loader.loadDepthMap(depthPath, data.dataset);
@@ -118,7 +118,7 @@ bool MultiViewPointCloud::generatePointCloudsGPU(
         DatasetParameters camDataset = data.dataset;
 
         const CameraInfo& cam = data.calibration[i];
-        
+
         // Focal length
         camDataset.CAM_FX_px = cam.focal_length_px;
         camDataset.CAM_FY_px = cam.focal_length_px; 

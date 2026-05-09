@@ -33,14 +33,26 @@ I think how to implement the part two of the project: generating a plenoptic ima
 (left and right view of the same scene).
 
 Phase 2
-I created a Camera Calibration class to read and store extrinsic and intrinsic parameters for multiple cameras from a json file. 
+I created a Camera Calibration class to store extrinsic and intrinsic parameters for multiple cameras from a json file. 
 
 Phase 3
-I extendent the existing single-view GPU point cloud generation pipeline by adding a new stage, the Multi View Point Cloud.
+I implemented a new Dataset Loader, since now I need to manage different datasets (each of which based on different rgb scene and
+depth map).
+
+Phase 3
+I created a new pipeline (MultiView GPU) by adding a new stage, the Multi View Point Cloud.
+
+Phase 4
+I extendent the MultiView GPU pipeline by creating the next GPU-based stage: MultiView Registration.
+
+Phase 5
+I yield the next stage: MultiView Registration in order to apply the rigid body transformation and merge the differents point clouds
+into a unified one.
 
 
 
 ## Details
+===============================================================================================================================
                                                 ---FIRST PART---
 
                                                 ---Phase 1---
@@ -106,6 +118,8 @@ Only by applying this first step the time performance for this stage drop signif
 Then I tried other options like merging the mask and the projection kernels into only one kernel, and also reduce the number of memcpy by packing (X, Y, Z, px, py, colors) into a struct (ending with only one memcpy calls) but I gained only fewers milliseconds. So doing I achieved a mean time of ~130ms. In addition I marked the pointer in the kernel as ```__restrict__``` in order to say to the compiler to don't overlap these pointers and activate the caching. Time performance doesn't improve anymore.
 *This might means the computation wasn't the problem, but memory allocation was. Now we are memory-bound*. 
 
+===============================================================================================================================
+
                                                 ---SECOND PART---
 
                                                 ---Phase 1---
@@ -128,5 +142,58 @@ I thought about the following roadmap:
                                                 ---Phase 2---
 Each camera contains its 3D position in millimeters, rotation in Euler angles (XYZ, degrees), focal length in pixels, and principal point. The class (```CameraCalibration.hpp``` and ```CameraCalibration.cpp```) parses the JSON, stores the data in a struct, and provides methods to retrieve the translation vector and rotation matrix for each camera. This ìmakes sure that each point cloud generated from a camera can be accurately transformed into a common global coordinate system.
 
+
                                                 ---Phase 3---
-I introduced ```MultiViewPointCloud.hpp```/```MultiViewPointCloud.cpp```. This phase is about just re-using the ```project2Dto3D()``` function in order to convert each depth map into a 3D point cloud. 
+I created e new hpp file (```MultiViewDatasetLoader.hpp```) to load a multi-view dataset from a folder and prepares all the data
+needed for the reconstruction following pipeline. Here the main steps of this file are:
+    1. Validate dataset folder
+    2. Load camera calibration (extrinsics + intrinsics)
+    3. Initialize per-view point cloud containers
+    4. Store dataset parameters (camera intrinsics, depth format, etc.)
+
+
+                                                ---Phase 4---
+I introduced ```MultiViewPointCloud.hpp```/```MultiViewPointCloud.cpp```. This phase is about just re-using the ```project2Dto3D()``` function in order to convert each depth map into a 3D point cloud. Basically here For each camera:
+    1. Load RGB image and depth map
+    2. Build a structure point cloud: (px, py, depth, color)
+    3. Send data to GPU
+    4. Backproject pixels into 3D coordinates (X, Y, Z)
+    5. Store resulting 3D point cloud in an array of point cloud
+
+                                                ---Phase 5---
+I created a new cu stage called ```MultiViewRegistration``` which kernels run completely on GPU, where first I computed the rigid body transformation by following this logic: 
+
+Input:
+- (X, Y, Z): point in camera coordinates
+- R: 3x3 rotation matrix
+- t: translation vector
+
+Output:
+- transformed point in world coordinates
+
+Formula:
+p_world = R^(-1) * p_cam + C
+
+*Notes about the revise formule used for the rigi body transformation*: In the proposed multi-view reconstruction pipeline, each depth map is first back-projected into the local coordinate system of its corresponding camera, meaning that every reconstructed point cloud is initially expressed in camera coordinates rather than in a shared world reference frame. Consequently, a rigid transformation is required to align all point clouds before merging and plenoptic rendering. In classical computer vision, camera extrinsics are commonly represented using the world-to-camera formulation
+
+                                                    p_camera = R * p_world + t
+
+where R is the rotation matrix and t is the translation vector. To recover world coordinates from camera-space points, the inverse transformation must therefore be applied. Starting from the previous equation:
+
+                                                    p_camera - t = R * p_world
+                                                    R^(-1) * (p_camera - t) = p_world
+                                                    p_world = R^(-1) * (p_camera) - R^(-1) * t
+	​
+
+However, in the adopted calibration setup, the dataset directly stores the camera center position C in world coordinates rather than the classical extrinsic translation vector t=−RC. As a result, the implemented transformation becomes:
+
+                                                    p_world = R^(-1) * p_camera + C
+
+where the inverse rotation aligns the reconstructed camera-space points with the global reference frame, while the camera center translates them into the correct world position. Experimental validation confirmed the correctness of this formulation, as the inverse transformation produced properly aligned multi-view point clouds and significantly reduced disocclusion artifacts in the final plenoptic rendering.
+
+Hence at the end of the day I implemented the Merge step:
+    1. Concatenate all transformed point clouds
+    2. Optionally remove duplicates (currently todo)
+    3. Build final unified point cloud
+
+before to pass give forward everything to the Plenoptic Rendering stage.

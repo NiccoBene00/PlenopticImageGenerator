@@ -15,7 +15,7 @@ Main steps:
 1. Validate dataset folder
 2. Load camera calibration (extrinsics + intrinsics)
 3. Initialize per-view point cloud containers
-4. Store dataset  parameters (camera intrinsics, depth format, etc.)
+4. Store dataset parameters (camera intrinsics, depth format, etc.)
 */
 
 inline bool loadMultiViewDataset(const std::string& folder, PipelineData& data) {
@@ -94,8 +94,8 @@ inline bool loadMultiViewDataset(const std::string& folder, PipelineData& data) 
         }
 
         // Debug info about depth format
-        std::cout << "Depth Type: " << depthImg.type() << "\n";
-        std::cout << "Depth Channels: " << depthImg.channels() << std::endl;
+        std::cout << "[MultiViewDatasetLoader] Depth Type: " << depthImg.type() << "\n";
+        std::cout << "[MultiViewDatasetLoader] Depth Channels: " << depthImg.channels() << std::endl;
     }
     std::cout << "========================================================\n";
     return true;

@@ -42,7 +42,7 @@ Output:
 - transformed point in world coordinates
 
 Formula:
-X_world = R * X_cam + t
+p_world = R * X_cam + t
 */
 __global__ void transformKernel(
     float* X, float* Y, float* Z,
@@ -107,17 +107,12 @@ For each camera:
 
 bool loadAndTransformPointClouds(PipelineData& data)
 {
-    if (data.multiViewClouds.size() != 3 || data.calibration.size() != 3) {
-        std::cerr << "[Error] Expecting three clouds and three calibration entries.\n";
-        return false;
-    }
-
     const int blockSize = 256;
 
     for(int camIdx = 0; camIdx < 3; ++camIdx) {
         auto& cloud = data.multiViewClouds[camIdx];
 
-        // Get CameraInfo from CameraCalibration
+        //get CameraInfo from CameraCalibration
         CameraInfo& calib = data.calibration[camIdx];
 
         std::cout << "CAM POS: " << calib.position_mm[0] << ", " << calib.position_mm[1] << ", " <<
@@ -149,12 +144,12 @@ bool loadAndTransformPointClouds(PipelineData& data)
                 Rinv[3*r + c] = R[3*c + r];
 
 
-        float t[3] = { calib.position_mm[0]/1000.0f, calib.position_mm[1]/1000.0f, calib.position_mm[2]/1000.0f };
+        float t[3] = { calib.position_mm[0], calib.position_mm[1], calib.position_mm[2] };
 
         float *d_R, *d_t;
         CUDA_CHECK(cudaMalloc(&d_R, 9*sizeof(float)));
         CUDA_CHECK(cudaMalloc(&d_t, 3*sizeof(float)));
-        CUDA_CHECK(cudaMemcpy(d_R, R, 9*sizeof(float), cudaMemcpyHostToDevice));
+        CUDA_CHECK(cudaMemcpy(d_R, Rinv, 9*sizeof(float), cudaMemcpyHostToDevice));
         CUDA_CHECK(cudaMemcpy(d_t, t, 3*sizeof(float), cudaMemcpyHostToDevice));
 
         int gridSize = (N + blockSize - 1)/blockSize;
