@@ -174,22 +174,21 @@ Output:
 Formula:
 p_world = R^(-1) * p_cam + C
 
-*Notes about the revise formule used for the rigi body transformation*: In the proposed multi-view reconstruction pipeline, each depth map is first back-projected into the local coordinate system of its corresponding camera, meaning that every reconstructed point cloud is initially expressed in camera coordinates rather than in a shared world reference frame. Consequently, a rigid transformation is required to align all point clouds before merging and plenoptic rendering. In classical computer vision, camera extrinsics are commonly represented using the world-to-camera formulation
+*Notes about the revise formule used for the rigi body transformation*: every reconstructed point cloud is initially expressed in camera coordinates rather than in a shared world reference frame. Hence we know that a rigid transformation is required to align all point clouds before merging and plenoptic rendering. Generally camera extrinsics are commonly represented using the world-to-camera formulation
 
                                                     p_camera = R * p_world + t
 
-where R is the rotation matrix and t is the translation vector. To recover world coordinates from camera-space points, the inverse transformation must therefore be applied. Starting from the previous equation:
+where R is the rotation matrix and t is the translation vector. To recover world coordinates from camera-space points, we need to use the inverse transformation. Starting from the previous equation:
 
                                                     p_camera - t = R * p_world
                                                     R^(-1) * (p_camera - t) = p_world
                                                     p_world = R^(-1) * (p_camera) - R^(-1) * t
 	​
-
 However, in the adopted calibration setup, the dataset directly stores the camera center position C in world coordinates rather than the classical extrinsic translation vector t=−RC. As a result, the implemented transformation becomes:
 
                                                     p_world = R^(-1) * p_camera + C
 
-where the inverse rotation aligns the reconstructed camera-space points with the global reference frame, while the camera center translates them into the correct world position. Experimental validation confirmed the correctness of this formulation, as the inverse transformation produced properly aligned multi-view point clouds and significantly reduced disocclusion artifacts in the final plenoptic rendering.
+where the inverse rotation aligns the reconstructed camera-space points with the global reference frame, while the camera center translates them into the correct world position.
 
 Hence at the end of the day I implemented the Merge step:
     1. Concatenate all transformed point clouds
