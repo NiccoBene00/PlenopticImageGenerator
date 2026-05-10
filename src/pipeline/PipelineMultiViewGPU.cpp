@@ -41,7 +41,7 @@ void PipelineMultiViewGPU::createDefaultStages() {
 
     // Rendering e post-processing
     stages.emplace_back(std::make_unique<PlenopticRendering>());
-    //stages.emplace_back(std::make_unique<PostProcessingGPU>());
+    stages.emplace_back(std::make_unique<PostProcessingGPU>());
 }
 
 void PipelineMultiViewGPU::initialize() {

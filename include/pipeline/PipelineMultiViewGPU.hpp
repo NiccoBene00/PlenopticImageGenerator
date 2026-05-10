@@ -2,7 +2,7 @@
 
 #include "pipeline/PipelineGPU.hpp"
 
-// Pipeline dedicata al multi-view
+// Pipeline dedicated to multi-view
 class PipelineMultiViewGPU : public PipelineGPU {
 public:
     PipelineMultiViewGPU(const SystemSpec& spec,
@@ -15,7 +15,7 @@ public:
     void setPipelineData(const PipelineData& pipelineData) { this->data = pipelineData; }
 protected:
     bool setup() override;
-    // Override: crea le stage specifiche per multi-view
+    // Override: yield the specific stage for multi-view 
     void createDefaultStages() override;
 
     

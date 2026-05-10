@@ -9,7 +9,7 @@
 #include <opencv2/opencv.hpp>
 
 // -------------------- Multi-View Point Cloud Stage --------------------
-// Gestisce la generazione di point cloud per dataset multi-view
+// Manages the generation of the point clouds for multiview dataset
 class MultiViewPointCloud : public PipelineStage {
 public:
 

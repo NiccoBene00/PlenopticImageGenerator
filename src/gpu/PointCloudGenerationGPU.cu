@@ -47,12 +47,6 @@
 #include <cmath>
 #include <chrono>
 
-struct PointPacked
-{
-    float X, Y, Z;
-    uint16_t px, py;
-    RGB8 color;
-};
 
 #define CUDA_CHECK(call)                                           \
 do {                                                               \
@@ -137,11 +131,6 @@ __global__ void projectScatterKernel(
 }
 
 
-//==================================================
-
-
-
-
 // adjustToSystem Kernel
 __global__ void adjustKernel(
     float* X, float* Y, float* Z,
@@ -161,6 +150,7 @@ __global__ void adjustKernel(
 }
 
 
+//==================================================
 
 
 bool project2Dto3D(PointCloud& ptCloud,
@@ -169,24 +159,32 @@ bool project2Dto3D(PointCloud& ptCloud,
 {
     auto t0 = std::chrono::high_resolution_clock::now();
 
+    // Number of input samples
     size_t N = ptCloud.Z.size();
     std::cout << "[GPU] Point Cloud Size:" << N << "\n";
     if (N == 0) return false;
 
+    // Background depth estimation
+    // The maximum depth value corresponds to invalid/background regions
+    // in the rendered depth map
     float bgVal = ptCloud.getMaxZ();
-    //float bgVal = 1000.0f;
 
     std::cout << "BGVAL value: " << bgVal << "\n";
 
+    // Camera intrinsics
+    // Super-resolution scaling must also be applied to the principal point
+    // and focal length to preserve projection consistency
     const int spResFactor = config.superResolutionFactor;
     const float fxInv = 1.0f / (dataset.CAM_FX_px * spResFactor);
     const float ppx = dataset.CAM_PX_px * spResFactor;
     const float ppy = dataset.CAM_PY_px * spResFactor;
 
+    //memory sizes
     size_t fSize = N * sizeof(float);
     size_t u16Size = N * sizeof(uint16_t);
     size_t colSize = N * sizeof(RGB8);
 
+    // Ensure RGB memory layout compatibility between OpenCV and CUDA struct
     static_assert(sizeof(cv::Vec3b) == sizeof(RGB8), "Size mismatch");
 
     // =========================
@@ -207,13 +205,17 @@ bool project2Dto3D(PointCloud& ptCloud,
     static uint16_t *d_pyOut = nullptr;
     static RGB8 *d_colOut = nullptr;
 
+    //temporary storage required by CUB inclusive scan
     static void* d_tempStorage = nullptr;
     static size_t tempStorageBytes = 0;
 
+    //Current allocated capacity
     static size_t capacity = 0;
 
+    // Allocate or resize GPU buffers if required
     if (N > capacity)
-    {
+    {   
+        // Release previous buffers if already allocated
         if (capacity > 0)
         {
             cudaFree(d_Z); cudaFree(d_px); cudaFree(d_py); cudaFree(d_col);
@@ -223,21 +225,26 @@ bool project2Dto3D(PointCloud& ptCloud,
             cudaFree(d_tempStorage);
         }
 
+        // Input buffers
         CUDA_CHECK(cudaMalloc(&d_Z, fSize));
         CUDA_CHECK(cudaMalloc(&d_px, u16Size));
         CUDA_CHECK(cudaMalloc(&d_py, u16Size));
         CUDA_CHECK(cudaMalloc(&d_col, colSize));
 
+        // Stream compaction buffers
         CUDA_CHECK(cudaMalloc(&d_mask, N * sizeof(int)));
         CUDA_CHECK(cudaMalloc(&d_scan, N * sizeof(int)));
 
+        // Output compact point cloud buffers
         CUDA_CHECK(cudaMalloc(&d_X, fSize));
         CUDA_CHECK(cudaMalloc(&d_Y, fSize));
         CUDA_CHECK(cudaMalloc(&d_Zout, fSize));
+
         CUDA_CHECK(cudaMalloc(&d_pxOut, u16Size));
         CUDA_CHECK(cudaMalloc(&d_pyOut, u16Size));
         CUDA_CHECK(cudaMalloc(&d_colOut, colSize));
 
+        //query required temporary memory for CUB scan
         cub::DeviceScan::InclusiveSum(
             nullptr, tempStorageBytes,
             d_mask, d_scan, N);
@@ -269,10 +276,14 @@ bool project2Dto3D(PointCloud& ptCloud,
     // =========================
     // SCAN
     // =========================
+    // STREAM COMPACTION USING PREFIX SCAN
+    //
+    // Inclusive scan transforms the binary mask into compact write indices
     cub::DeviceScan::InclusiveSum(
         d_tempStorage, tempStorageBytes,
         d_mask, d_scan, N);
 
+    //number of valid points = last value of inclusive scan
     int validCount;
     CUDA_CHECK(cudaMemcpy(&validCount, d_scan + (N - 1), sizeof(int), cudaMemcpyDeviceToHost));
 
@@ -308,6 +319,7 @@ bool project2Dto3D(PointCloud& ptCloud,
         validCount * sizeof(RGB8),
         cudaMemcpyDeviceToHost));
 
+    // Statistics and profiling
     std::cout << "[GPU] Valid points: " << validCount << "\n";
 
     auto t1 = std::chrono::high_resolution_clock::now();
@@ -319,16 +331,22 @@ bool project2Dto3D(PointCloud& ptCloud,
 
 
 
-
 bool adjustToSystem(PointCloud& ptCloud,
                     const SystemSpec& spec,
                     const Config& config)
 {
     auto t0 = std::chrono::high_resolution_clock::now();
 
+    // Number of points
     size_t N = ptCloud.size();
     if (N == 0) return false;
 
+    // Compute geometric statistics of the point cloud
+    //
+    // Statistics include:
+    //      - bounding box
+    //      - center
+    //      - spatial ranges
     auto stats = ptCloud.computeStats();
 
     float xyScale = std::min(

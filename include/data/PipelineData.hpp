@@ -27,7 +27,7 @@ struct PipelineData {
     std::vector<CameraInfo> calibration;    // Calibration per camera
     PointCloud mergedCloud;           
 	
-	std::string datasetPath;             // Result of mergeAndDeduplicate
+	std::string datasetPath;             // store the string path of the multiview dataset
 
 	bool isMultiView = false; // set automatically in main based on dataset path
 };
