@@ -1,8 +1,9 @@
 # Optimization changes
 
 ## Notes
-===============================================================================================================================
+=============================================================================================================
                                                 ---FIRST PART---
+												
 Phase 1
 I create a toggle system that is able to switch pipeline mode (previuous mode where only the rendering stage was on GPU and 
 the new one where we aim to bring each stage on GPU).
