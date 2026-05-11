@@ -64,6 +64,26 @@ namespace GPU {
 namespace PointCloudGPU {
 
 //=================================================
+
+
+//   Generates a binary validity mask used to identify foreground depth
+//   samples and reject background pixels during point cloud generation.
+//   The dataset stores invalid/background depth samples using a very large
+//   depth value (bgVal). Hence:
+//
+//          Z < bgVal
+//
+// Output:
+//      mask[i] = 1  -> valid point
+//      mask[i] = 0  -> background / invalid point
+//
+// GPU optimization:
+//   __ldg() is used to exploit the CUDA read-only cache for faster memory
+//   access during sequential depth reads.
+//
+//Outcome:
+//   The generated mask is later used together with a prefix-sum scan to
+//   compact valid points into contiguous GPU buffers
 __global__ void computeMaskKernel(
     const float* __restrict__ Z,
     int* __restrict__ mask,
@@ -77,7 +97,8 @@ __global__ void computeMaskKernel(
     mask[i] = (z < bgVal) ? 1 : 0;
 }
 
-
+// Converts valid depth pixels into 3D point cloud coordinates and
+//compacts the output into contiguous arrays
 __global__ void projectScatterKernel(
     const float* __restrict__ Z,
     const uint16_t* __restrict__ px,
@@ -107,20 +128,24 @@ __global__ void projectScatterKernel(
     int m = __ldg(&mask[i]);
     if (m == 0) return;
 
+    // Compact output index computed using prefix-sum scan
     int outIdx = __ldg(&scan[i]) - 1;
 
-    // load once (register caching)
+    // load once pixel/depth/color data
     float Zval = __ldg(&Z[i]);
     uint16_t pxv = __ldg(&px[i]);
     uint16_t pyv = __ldg(&py[i]);
     RGB8 col = colors[i];
 
+    // Apply super-resolution scaling to image coordinates
     float x = (float)pxv * spResFactor;
     float y = (float)pyv * spResFactor;
 
+    // Perspective reprojection from image space to 3D space
     float Xd = (x - ppx) * Zval * fxInv;
     float Yd = (y - ppy) * Zval * fxInv;
 
+    //scatter compacted point cloud data
     Xout[outIdx] = Xd;
     Yout[outIdx] = Yd;
     Zout[outIdx] = Zval;
@@ -132,6 +157,8 @@ __global__ void projectScatterKernel(
 
 
 // adjustToSystem Kernel
+// Applies final geometric normalization and positioning to the point cloud
+// directly on GPU
 __global__ void adjustKernel(
     float* X, float* Y, float* Z,
     float xCenter, float yCenter, float zCenter,
@@ -142,7 +169,7 @@ __global__ void adjustKernel(
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     if (i >= N) return;
 
-    // same formula as CPU
+    // same formula as CPU: apply centering, scaling and translation
     X[i] = (X[i] - xCenter) * xyScale + xOffset;
     Y[i] = (Y[i] - yCenter) * xyScale + yOffset;
     Z[i] = (Z[i] - zCenter) * xyScale + zOffset;
@@ -244,7 +271,36 @@ bool project2Dto3D(PointCloud& ptCloud,
         CUDA_CHECK(cudaMalloc(&d_pyOut, u16Size));
         CUDA_CHECK(cudaMalloc(&d_colOut, colSize));
 
-        //query required temporary memory for CUB scan
+        /*
+
+        INSIGHT ON THE USING OF CUB/INCLUSIVE-SUM
+
+        During depth reprojection, only foreground pixels must be converted
+        into 3D points. Background samples are discarded using a binary mask.
+        
+        Problem:
+           After filtering invalid pixels, valid points become sparse inside the
+           original image-sized arrays. A compact contiguous representation is
+           therefore required before generating the final point cloud.
+        
+        Solution:
+            NVIDIA CUB is used to efficiently perform parallel prefix-sum operations
+           directly on the GPU
+        
+        Key operation:
+              cub::DeviceScan::InclusiveSum()
+        
+        The inclusive scan transforms the binary validity mask:
+        
+              [1 0 1 1 0 1]
+        
+        into:
+        
+              [1 1 2 3 3 4]
+        
+        where each element represents the compact destination index of a valid point.
+        
+        */
         cub::DeviceScan::InclusiveSum(
             nullptr, tempStorageBytes,
             d_mask, d_scan, N);

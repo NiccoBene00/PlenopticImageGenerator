@@ -101,12 +101,6 @@ __global__ void crackFilteringKernelROI(
     for (int dy = -kernelRadius; dy <= kernelRadius; ++dy) {
         for (int dx = -kernelRadius; dx <= kernelRadius; ++dx) {
 
-            //int nx_l = reflect101(lx + dx, mi.width);
-            //int ny_l = reflect101(ly + dy, mi.height);
-
-            //int nx = mi.x + nx_l;
-            //int ny = mi.y + ny_l;
-
             int nx = min(max(mi.x + lx + dx, mi.x), mi.x + mi.width - 1);
             int ny = min(max(mi.y + ly + dy, mi.y), mi.y + mi.height - 1);
 
@@ -186,6 +180,24 @@ __global__ void rotateMicroimage180Kernel(
 // ======================
 // HOST FUNCTION
 // ======================
+
+// ROI-based filtering:
+//   Filtering is constrained to microimage regions only, preventing
+//   unwanted blending across neighboring lenslets
+//
+// Batch processing:
+//   CUDA grid.z is limited to 65535.
+//   Therefore, microimages are processed in batches when the number
+//   of lenslets exceeds the maximum grid depth
+//
+// GPU design:
+//   Each CUDA thread processes one pixel inside a microimage ROI
+//
+// Kernel radius:
+//   The filtering radius is configurable through:
+//
+//          config.crackFilteringKernel
+
 bool crackFiltering(
     cv::Mat& image,
     const std::vector<MicroimageGPU>& microimages,
@@ -223,7 +235,7 @@ bool crackFiltering(
     cudaMemcpy(d_in, image.ptr<uchar4>(), imgSize, cudaMemcpyHostToDevice);
     cudaMemcpy(d_micro, microimages.data(), microSize, cudaMemcpyHostToDevice);
 
-    // inizializza output
+    // initialize output
     cudaMemcpy(d_out, d_in, imgSize, cudaMemcpyDeviceToDevice);
 
     int maxW = 0, maxH = 0;
@@ -276,6 +288,18 @@ bool crackFiltering(
 // ======================
 // ROTATION HOST
 // ======================
+
+
+// Microimage size:
+//   The microimage diameter is estimated from the physical MLA pitch
+//   and display pixel size:
+//
+//          microimageSize = MLA pitch / display pixel size
+//
+// Parallelization:
+//   Each CUDA thread processes one output pixel and computes its
+//   corresponding rotated source coordinate.
+
 bool rotateMicroimages(cv::Mat& image, const SystemSpec& spec)
 {
     

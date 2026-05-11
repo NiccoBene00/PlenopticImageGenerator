@@ -10,7 +10,7 @@ PipelineGPU::PipelineGPU(const SystemSpec& spec, const DatasetParameters& datase
                         const std::string& outputPath)
     : Pipeline(spec, dataset, config, outputPath)
 {
-    //createDefaultStages(); 
+
 }
 
 void PipelineGPU::createDefaultStages() {

@@ -56,7 +56,7 @@ void MultiViewPointCloud::fillPointCloudFromImages(PointCloud& ptCloud, const cv
             ptCloud.Z[idx] = depth.at<float>(y, x);
 
             cv::Vec3b c = rgb.at<cv::Vec3b>(y, x);
-            ptCloud.colors[idx] = { c[0], c[1], c[2] };
+            ptCloud.colors[idx] = { c[2], c[1], c[0] };
         }
     }
 }

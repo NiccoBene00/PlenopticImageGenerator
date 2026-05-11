@@ -8,7 +8,7 @@
 bool PostProcessingGPU::crackFilteringGPU(PipelineData& data)
 {
     std::cout << "[GPU] Crack Filtering\n";
-    //return GPU::PostProcessing::crackFiltering(data.plenopticImage, data.spec, data.config);
+
     PostProcessing cpuPost;
     cpuPost.computeMicroimagesRegions(
         data.spec,
