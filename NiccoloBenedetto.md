@@ -1,6 +1,5 @@
-# Optimization changes
 
-## Notes
+## Notes taken during the project
 
                                                 ---FIRST PART---
 												
