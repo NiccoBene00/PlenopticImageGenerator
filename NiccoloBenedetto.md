@@ -57,7 +57,8 @@ into a unified one.
 
 **FIRST PART**
 
-    -Phase 1-
+### Phase 1
+
 Now in ```main.cpp``` we can choose to perform between the previous pipeline and a new entire GPU pipeline based on
 ```config.entirePipelineGPU```.
 To do so I added a public method ```initialize()``` inside ```Pipeline.hpp``` and I implemented it in ```Pipeline.cpp```
@@ -65,7 +66,9 @@ calling ```createDefaultStages()```. Then I created ```PipelineGPU.hpp``` where 
 ```Pipeline.cpp``` that overrides the method ```createDefaultStages```. And in the new ```PipelineGPU.cpp``` I implemented
 constructor and the new stage pipeline: PreProcessing -> PointCloudGeneration -> PlenopticRendering -> PostProcessingGPU.
 
-    -Phase 2-
+
+### Phase 2
+
 For the new Post Processing stage on GPU I create the following files:
 - ```PostProcessingGPU.hpp``` -> declares CPU stage wrapping GPU calls;
 - ```PostProcessingGPU.cpp``` -> implements ```setupSteps()```, ```crackFilteringGPU()```, ```rotateMicroimagesGPU()``` calling GPU functions;
@@ -84,7 +87,9 @@ NOTES: evaluating the psnr factor between the ground truth plenoptic image (the 
 and the one we get here with this stage on GPU we achieve a psnr factor ~34.
 FUTURE OPTIMIZATION: optimize microimage rotation kernel further (shared memory, coalesced access)...
 
-    -Phase 3-
+
+### Phase 3
+
 For the new Post Processing stage on GPU I create the following files:
 - ```PointCloudGenerationGPU.hpp``` -> declares CPU stage wrapping GPU calls;
 - ```PointCloudGenerationGPU.cpp``` -> implements ```setupSteps()```, ```initPointCloudGPU()```, ```project2Dto3DGPU()``` and ```adjustPointCloudToSystemGPU``` calling GPU functions (except for ```initPointCloudGPU()`` tha uses the cpu version);
@@ -96,7 +101,9 @@ valid filtering procedure).
 
 NOTES: Despite multiple optimization attempts on the GPU implementation of the point cloud generation stage, the psnr value could not be improved beyond ~31. I tested several approaches, including enforcing numerical consistency with the CPU version (scaling factors, float vs. double precision), ensuring stable ordering of points (avoiding atomic operations and using thrust-based compaction), and aligning the projection pipeline exactly with the CPU logic. Additionally, post-processing was verified independently and shown to achieve higher psnr when isolated, suggesting that the error originates in the point cloud generation stage. However, none of these modifications resulted in a measurable psnr improvement.
 
-    -Phase 4-
+
+### Phase 4
+
 Originally, the idea was upscaling RGB and depth images to the GPU using OpenCV’s CUDA functions (```cv::cuda::GpuMat``` and ```cv::cuda::resize```) to gain speed. Hozever OpenCV prebuilt libraries on Windows often don’t include ```cv::cuda::resize```, which caused the build errors. So I created ```GPU::PreProcessing``` namespace.
 I implemented Pre Processing GPU pipeline stage, with methods like ```superResolutionGPU()``` and ```setupSteps()```.
 This ensures future CUDA kernels can be added without changing the interface or pipeline integration.
@@ -107,7 +114,8 @@ NOTES: As a result, the observed runtime of this new stage decreased to ~30ms, e
 FUTURE OPTIMIZATION: true GPU-based resizing using ```cv::cuda::GpuMat``` and ```cv::cuda::resize``` could further reduce the runtime for very large images;
 
 
-    -Phase 5-
+### Phase 5
+
 The original version of the GPU Post Processing Stage, which achieved a PSNR of approximately 33.9, relied on a simpler median computation and a more implicit handling of boundaries and crack masking. For the updated implementation I  introduced a region-based (ROI) processing strategy using explicit microimage descriptors on the GPU. Additionally I restructured the kernel to operate per microimage and avoid out-of-bounds accesses.
 Further refinements included removing the alpha channel from the median computation (to preserve crack masking consistency), introducing device-side median selection (later reverted to full sorting for correctness), and initializing the output buffer to avoid undefined writes. Despite these improvements, the PSNR dropped to around 31.18 and remained stable across multiple adjustments. This let me think to have achieve some psnr roofline for such implementations. 
 *The main source of this gap is currently attributed to differences in median filtering behavior (especially ordering and tie handling) and possibly subtle mismatches in border handling or mask application.*
@@ -124,7 +132,8 @@ Then I tried other options like merging the mask and the projection kernels into
 
 **SECOND PART**
 
-    -Phase 1-
+### Phase 1
+
 Here the precise assignement consists of merging point clouds from three cameras while preserving geometric consistency and reducing duplicates.
 
 I thought about the following roadmap:
@@ -150,13 +159,15 @@ T        := 3D translation vector from position_mm
 
 Possible algorithms? Do I need to scan always each points??
 
-- re-run post processing stage?
+- re-run post processing stage
 
-    -Phase 2-
+
+### Phase 2
 Each camera contains its 3D position in millimeters, rotation in Euler angles (XYZ, degrees), focal length in pixels, and principal point. The class (```CameraCalibration.hpp``` and ```CameraCalibration.cpp```) parses the JSON, stores the data in a struct, and provides methods to retrieve the translation vector and rotation matrix for each camera. This ìmakes sure that each point cloud generated from a camera can be accurately transformed into a common global coordinate system.
 
 
-    -Phase 3-
+### Phase 3
+
 I created e new hpp file (```MultiViewDatasetLoader.hpp```) to load a multi-view dataset from a folder and prepares all the data
 needed for the reconstruction following pipeline. Here the main steps of this file are:
     1. Validate dataset folder
@@ -165,7 +176,8 @@ needed for the reconstruction following pipeline. Here the main steps of this fi
     4. Store dataset parameters (camera intrinsics, depth format, etc.)
 
 
-    -Phase 4-
+### Phase 4
+
 I introduced ```MultiViewPointCloud.hpp```/```MultiViewPointCloud.cpp```. This phase is about just re-using the ```project2Dto3D()``` function in order to convert each depth map into a 3D point cloud. Basically here For each camera:
     1. Load RGB image and depth map
     2. Build a structure point cloud: (px, py, depth, color)
@@ -173,7 +185,10 @@ I introduced ```MultiViewPointCloud.hpp```/```MultiViewPointCloud.cpp```. This p
     4. Backproject pixels into 3D coordinates (X, Y, Z)
     5. Store resulting 3D point cloud in an array of point cloud
     
-    -Phase 5-
+
+
+### Phase 5
+
 I created a new cu stage called ```MultiViewRegistration``` which kernels run completely on GPU, where first I computed the rigid body transformation by following this logic: 
 
 Input:
