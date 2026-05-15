@@ -126,21 +126,31 @@ Then I tried other options like merging the mask and the projection kernels into
 
     -Phase 1-
 Here the precise assignement consists of merging point clouds from three cameras while preserving geometric consistency and reducing duplicates.
+
 I thought about the following roadmap:
-    - get position, rotation, and intrinsics for each camera (```CameraCalibration.hpp``` and ```CameraCalibration.cpp```);
-    - convert RGB + depth into a 3D point cloud for each camera by means ```PointCloudGenerationGPU::project2Dto3D```;
-    - merge point clouds from the previous step into the central camera’s coordinate system (camera 3). I use the rigid body transformation liked in the email from the supervisor:
 
-                                                    P_world​ = R ⋅ P_camera​ + T
+- get position, rotation, and intrinsics for each camera (```CameraCalibration.hpp``` and ```CameraCalibration.cpp```);
+- convert RGB + depth into a 3D point cloud for each camera by means ```PointCloudGenerationGPU::project2Dto3D```;
+- merge point clouds from the previous step into the central camera’s coordinate system (camera 3). I use the rigid body transformation liked in the email from the supervisor:
 
-        where P_camera := 3D point in the local camera world
-                  R    := 3x3 rotation matrix from Euler angles in ```rotation_xyz_deg```
-                  T    := 3D translation vector from ```position_mm```
+```text
+P_world​ = R ⋅ P_camera​ + T
+```
 
-    - concatenate points from all cameras into a single cloud;
-    - eliminate points that are at the same position within a small tolerance (e.g., 1e-5) like Brenno suggested;
-    Possible algorithms? Do I need to scan always each points??
-    - re-run post processing stage?
+where:
+
+```text
+P_camera := 3D point in the local camera world
+R        := 3x3 rotation matrix from Euler angles in rotation_xyz_deg
+T        := 3D translation vector from position_mm
+```
+
+- concatenate points from all cameras into a single cloud;
+- eliminate points that are at the same position within a small tolerance (e.g., 1e-5) like Brenno suggested;
+
+Possible algorithms? Do I need to scan always each points??
+
+- re-run post processing stage?
 
     -Phase 2-
 Each camera contains its 3D position in millimeters, rotation in Euler angles (XYZ, degrees), focal length in pixels, and principal point. The class (```CameraCalibration.hpp``` and ```CameraCalibration.cpp```) parses the JSON, stores the data in a struct, and provides methods to retrieve the translation vector and rotation matrix for each camera. This ìmakes sure that each point cloud generated from a camera can be accurately transformed into a common global coordinate system.
