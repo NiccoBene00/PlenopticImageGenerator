@@ -18,7 +18,7 @@
 #include "data/PipelineData.hpp"
 #include "data/MultiViewDatasetLoader.hpp"
 
-//----------------- Program options -----------------
+//Program options 
 struct ProgramOptions
 {
     std::string systemSpecificationPath;
@@ -28,13 +28,13 @@ struct ProgramOptions
     bool guiEnable = false;
 };
 
-// Helper per path assoluti
+// Helper for absolute paths
 inline std::string getAbsolutePath(std::string relativePath) {
     std::filesystem::path root = PROJECT_ROOT_DIR;
     return (root / relativePath).string();
 }
 
-// Parse CLI
+// Parser CLI (design to optmize)
 static ProgramOptions parseArguments(int argc, char* argv[])
 {
     if (argc < 9) {
@@ -71,7 +71,7 @@ static ProgramOptions parseArguments(int argc, char* argv[])
     return options;
 }
 
-//----------------- File loading helper -----------------
+//File loading helper
 template <class Type>
 static Type loadFromFile(const std::string& filepath)
 {
@@ -83,7 +83,7 @@ static Type loadFromFile(const std::string& filepath)
     return data.value();
 }
 
-//----------------- Main -----------------
+
 int main(int argc, char* argv[])
 {
     cv::utils::logging::setLogLevel(cv::utils::logging::LogLevel::LOG_LEVEL_FATAL);
