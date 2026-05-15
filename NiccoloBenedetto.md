@@ -1,5 +1,6 @@
 
 ## Notes taken during the project
+---
 
                                                 ---FIRST PART---
 												
