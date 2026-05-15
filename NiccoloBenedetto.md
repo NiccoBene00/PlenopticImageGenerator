@@ -120,8 +120,8 @@ The original version of the GPU Post Processing Stage, which achieved a PSNR of 
 Further refinements included removing the alpha channel from the median computation (to preserve crack masking consistency), introducing device-side median selection (later reverted to full sorting for correctness), and initializing the output buffer to avoid undefined writes. Despite these improvements, the PSNR dropped to around 31.18 and remained stable across multiple adjustments. This let me think to have achieve some psnr roofline for such implementations. 
 *The main source of this gap is currently attributed to differences in median filtering behavior (especially ordering and tie handling) and possibly subtle mismatches in border handling or mask application.*
 
-Regarding the time improvance of the Point Cloud Generation Stage the first step was removed the big cost given by "cuda malloc
-+ cuda free" for each call. So I replaced this memory implementation in the ```project2Dto3D()``` host function with a new one 
+Regarding the time improvance of the Point Cloud Generation Stage the first step was removed the big cost given by "cuda malloc with
+cuda free" for each call. So I replaced this memory implementation in the ```project2Dto3D()``` host function with a new one 
 "allocate one time + resue" by making static buffers static and reusable. 
 Only by applying this first step the time performance for this stage drop significantly: from ~190ms to ~140ms (mean of the last
 5 launches in a block of 10 runs).
