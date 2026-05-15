@@ -209,4 +209,6 @@ to a folder with multiple .json/.exr files. In the positive case the system swit
 This design should be revised and optmized.
 The command for the multi-view becomes:
 
+```bash
 C:\path-to-project\code\out\build\x64-release\pig.exe --system_spec <path-to-system-spec>.json --dataset <path-to-multi-view-dataset> --config <path-to-config>.json --output <path-to-output>.png
+```
