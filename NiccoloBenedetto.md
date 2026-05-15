@@ -2,51 +2,51 @@
 ## Notes taken during the project
 ---
 
-*FIRST PART*
+**FIRST PART: GPU PIPELINE**
 												
-Phase 1
+Phase 1:
 I create a toggle system that is able to switch pipeline mode (previuous mode where only the rendering stage was on GPU and 
 the new one where we aim to bring each stage on GPU).
 
-Phase 2
+Phase 2:
 I analyze how bringing everything on GPU. First I observe that the most expensive stage is the Post Processing one (above 50% of the total stage execution time), so I focus on creating a GPU Post Processing stage.
 
-Phase 3
+Phase 3:
 The next longest stage was the point cloud generation one. This stage is composed by 3 step:
     - init point cloud;
     - project 2D to 3D (pinhole projection equation);
     - adjust to system;
 I chose to bring only the last two step on GPU since the first one was already efficient on CPU.
 
-Phase 4
+Phase 4:
 I dealt with the last remain stage, the pre processing one. I decided to leave the main functionality of this stage
 (super resolution) on cpu by creating namespace and structures GPU ready.
 
-Phase 5
+Phase 5:
 Revising the post processing stage in order to improve the psnr factor.
 Optimization of the point cloud generation stage in order to improve the time performance.
 
 
-*SECOND PART*
+**SECOND PART: MULTI-VIEW GPU PIPELINE**
 
-Phase 1
+Phase 1:
 I think how to implement the part two of the project: generating a plenoptic image starting from a multiview dataset
 (left and right view of the same scene).
 
-Phase 2
+Phase 2:
 I created a Camera Calibration class to store extrinsic and intrinsic parameters for multiple cameras from a json file. 
 
-Phase 3
+Phase 3:
 I implemented a new Dataset Loader, since now I need to manage different datasets (each of which based on different rgb scene and
 depth map).
 
-Phase 3
+Phase 3:
 I created a new pipeline (MultiView GPU) by adding a new stage, the Multi View Point Cloud.
 
-Phase 4
+Phase 4:
 I extendent the MultiView GPU pipeline by creating the next GPU-based stage: MultiView Registration.
 
-Phase 5
+Phase 5:
 I yield the next stage: MultiView Registration in order to apply the rigid body transformation and merge the differents point clouds
 into a unified one.
 
@@ -136,6 +136,7 @@ I thought about the following roadmap:
         where P_camera := 3D point in the local camera world
                   R    := 3x3 rotation matrix from Euler angles in ```rotation_xyz_deg```
                   T    := 3D translation vector from ```position_mm```
+
     - concatenate points from all cameras into a single cloud;
     - eliminate points that are at the same position within a small tolerance (e.g., 1e-5) like Brenno suggested;
     Possible algorithms? Do I need to scan always each points??
