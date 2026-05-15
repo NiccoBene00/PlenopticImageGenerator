@@ -155,10 +155,7 @@ T        := 3D translation vector from position_mm
 ```
 
 - concatenate points from all cameras into a single cloud;
-- eliminate points that are at the same position within a small tolerance (e.g., 1e-5) like Brenno suggested;
-
-Possible algorithms? Do I need to scan always each points??
-
+- eliminate points that are at the same position within a small tolerance (e.g., 1e-5) like Brenno suggested; (Possible algorithms? Do I need to scan always each points??)
 - re-run post processing stage
 
 
