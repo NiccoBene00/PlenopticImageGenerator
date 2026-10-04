@@ -13,7 +13,7 @@ CUDA/C++ redesign of a plenoptic image generation pipeline for **Integral Imagin
 |:---:|:---:|:---:|
 | end-to-end speedup<br>(1713 ms → 293 ms) | PSNR of GPU vs CPU output<br>(post-processing stage) | pixels recovered by multi-view<br>(disocclusion recovery) |
 
-Measured on the `ball` dataset, NVIDIA GTX 1080 Ti (compute capability 6.1).
+Measured on the `ball` dataset through an NVIDIA GTX 1080 Ti.
 
 | Single-view | Multi-view (3 cameras) | Difference |
 |:---:|:---:|:---:|
@@ -27,8 +27,8 @@ Integral Imaging reconstructs a light field through a **Microlens Array (MLA)** 
 
 PIG converts an **RGB + depth** image into such a plenoptic image. The original prototype runs most stages sequentially on the CPU, which causes two problems:
 
-- **Performance:** about 1.7 s per frame on the reference dataset.
-- **Artifacts:** a single viewpoint gives a sparse point cloud, producing *cracks* between projected samples and *disocclusions* near object contours.
+- **Performance:** about 1.7 s per frame on the reference `ball` dataset.
+- **Artifacts:** a single viewpoint produces *cracks* between projected samples and *disocclusions* near object contours.
 
 <p align="center"><img src="docs/images/display_geometry.png" width="600" alt="Integral imaging display geometry"></p>
 <p align="center"><sub>Integral Imaging geometry (adapted from Ferreira et al., 2026).</sub></p>
@@ -36,12 +36,12 @@ PIG converts an **RGB + depth** image into such a plenoptic image. The original 
 ## My contributions
 
 ### 1. GPU redesign of the pipeline (CUDA)
-The two most expensive stages were moved to the GPU, preserving the original behaviour:
+The two most expensive stages of the existing pipeline were moved to the GPU, preserving the original behaviour:
 
 - **Point cloud generation:** validity-mask kernel, stream compaction with `cub::DeviceScan::InclusiveSum`, and a projection/scatter kernel (pinhole back-projection, one thread per pixel).
 - **Post-processing:** crack-filtering kernel with ROI-based execution, plus a rotation kernel.
-- **Profiling** with NVIDIA Nsight to identify bottlenecks and check that the kernels use the hardware well.
-- The original CPU pipeline is **kept** and can be selected with a configuration flag, so both versions can be benchmarked on the same input.
+- **Profiling** with NVIDIA Nsight to identify bottlenecks and check whenever the kernels use the hardware well.
+- The original CPU pipeline is held and can be selected with a configuration flag, so both versions can be benchmarked on the same input.
 
 ### 2. Multi-view reconstruction (CUDA)
 The pipeline now accepts datasets with **multiple RGB+D cameras**:
@@ -69,7 +69,6 @@ All experiments ran on the `ball` dataset. The original CPU output is the refere
 | Post-processing | 844.0 | 101.7 |
 | **Total** | **1713.4** | **293.0** |
 
-<!-- TODO: add a short note explaining what the CPU baseline is for the rendering and pre-processing rows (the report says rendering was already GPU-based and pre-processing was kept on CPU in the original prototype). -->
 
 ### Correctness
 
@@ -129,16 +128,7 @@ Quality metrics:
 
 ## Build and run
 
-<!-- TODO: paste here the build guide from the original repository, then fix:
-  - remove the personal path (C:\Users\Frbre\...) and use a generic one
-  - use one executable name consistently (pig.exe vs pig_cpp.exe)
-  - document the flag that switches between CPU and GPU pipelines
-  - state requirements: CUDA toolkit version, GPU used (GTX 1080 Ti, compute capability 6.1)
--->
-
 *The instructions below are adapted from the original PIG repository.*
-
-(original guide)
 
 ## License and acknowledgements
 
@@ -268,7 +258,7 @@ To automate this, you can set up these arguments in Visual Studio so that you ca
     {
       "type": "default",
       "project": "CMakeLists.txt",
-      "projectTarget": "pig_cpp.exe",
+      "projectTarget": "pig.exe",
       "name": "Run PIG",
       "args": [
         "--system_spec",
