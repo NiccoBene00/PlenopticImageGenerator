@@ -4,7 +4,7 @@
 CUDA/C++ redesign of a plenoptic image generation pipeline for **Integral Imaging (glasses-free 3D) displays**, extended to **multi-view RGB+D reconstruction** to recover disoccluded geometry.
 
 > **Credits.** The Plenoptic Image Generator (PIG) was developed by the Computer Vision group at Université Libre de Bruxelles (LISA laboratory). The original repository is hosted on the department's internal GitLab (access restricted).
-> This repository contains **my work on top of the original pipeline**, carried out as a *Computing Project* (2025-2026, ULB) under the supervision of Prof. Daniele Bonatto and Brenno Ribeiro Ferreira.
+> This repository contains **my work on top of the original pipeline**, carried out as a *Computing Project* (2025-2026, ULB) under the supervision of Prof. Daniele Bonatto and the PhD Brenno Ribeiro Ferreira.
 > Original pipeline: B. Ferreira et al., *"Large-Size Integral Imaging Display with Depth Image-Based Plenoptic Rendering"*, SPIE, 2026.
 
 ## Results at a glance
