@@ -201,7 +201,7 @@ Check if CUDA is already installed:
 ```bash
 nvcc --version
 
-C:\Users\Frbre>nvcc --version
+C:\Users\user_name>nvcc --version
 	nvcc: NVIDIA (R) Cuda compiler driver
 	Copyright (c) 2005-2025 NVIDIA Corporation
 	Built on Tue_Dec_16_19:27:18_Pacific_Standard_Time_2025
