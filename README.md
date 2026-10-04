@@ -1,5 +1,148 @@
 ﻿
-# Plenoptic Image Generator (PIG)
+# PIG-GPU: GPU-Accelerated Plenoptic Image Generator with Multi-View Reconstruction
+
+CUDA/C++ redesign of a plenoptic image generation pipeline for **Integral Imaging (glasses-free 3D) displays**, extended to **multi-view RGB+D reconstruction** to recover disoccluded geometry.
+
+> **Credits.** The Plenoptic Image Generator (PIG) was developed by the Computer Vision group at Université Libre de Bruxelles (LISA laboratory). The original repository is hosted on the department's internal GitLab (access restricted).
+> This repository contains **my work on top of the original pipeline**, carried out as a *Computing Project* (2025-2026, ULB) under the supervision of Prof. Daniele Bonatto and Brenno Ribeiro Ferreira.
+> Original pipeline: B. Ferreira et al., *"Large-Size Integral Imaging Display with Depth Image-Based Plenoptic Rendering"*, SPIE, 2026.
+
+## Results at a glance
+
+| ~5.8x | ~34 dB | ~350k px |
+|:---:|:---:|:---:|
+| end-to-end speedup<br>(1713 ms → 293 ms) | PSNR of GPU vs CPU output<br>(post-processing stage) | pixels recovered by multi-view<br>(disocclusion recovery) |
+
+Measured on the `ball` dataset, NVIDIA GTX 1080 Ti (compute capability 6.1).
+
+| Single-view | Multi-view (3 cameras) | Difference |
+|:---:|:---:|:---:|
+| ![single view](docs/images/single_view.jpg) | ![multi view](docs/images/multi_view.jpg) | ![difference](docs/images/difference.jpg) |
+
+Dark halos around the sphere (disocclusions caused by missing geometry in a single view) are significantly reduced when several viewpoints are merged.
+
+## Background
+
+Integral Imaging reconstructs a light field through a **Microlens Array (MLA)** placed in front of a display panel. The panel shows a *plenoptic image*, a grid of microimages, one per microlens, each seen from a slightly different viewpoint. This gives depth perception and motion parallax without glasses.
+
+PIG converts an **RGB + depth** image into such a plenoptic image. The original prototype runs most stages sequentially on the CPU, which causes two problems:
+
+- **Performance:** about 1.7 s per frame on the reference dataset.
+- **Artifacts:** a single viewpoint gives a sparse point cloud, producing *cracks* between projected samples and *disocclusions* near object contours.
+
+<p align="center"><img src="docs/images/display_geometry.png" width="600" alt="Integral imaging display geometry"></p>
+<p align="center"><sub>Integral Imaging geometry (adapted from Ferreira et al., 2026).</sub></p>
+
+## My contributions
+
+### 1. GPU redesign of the pipeline (CUDA)
+The two most expensive stages were moved to the GPU, preserving the original behaviour:
+
+- **Point cloud generation:** validity-mask kernel, stream compaction with `cub::DeviceScan::InclusiveSum`, and a projection/scatter kernel (pinhole back-projection, one thread per pixel).
+- **Post-processing:** crack-filtering kernel with ROI-based execution, plus a rotation kernel.
+- **Profiling** with NVIDIA Nsight to identify bottlenecks and check that the kernels use the hardware well.
+- The original CPU pipeline is **kept** and can be selected with a configuration flag, so both versions can be benchmarked on the same input.
+
+### 2. Multi-view reconstruction (CUDA)
+The pipeline now accepts datasets with **multiple RGB+D cameras**:
+
+1. One point cloud per camera (reusing the GPU back-projection).
+2. **Registration and merging** into a common reference frame with a rigid transform, `p_world = R^-1 · p_camera + C`, using one CUDA thread per point.
+3. Plenoptic rendering and post-processing on the merged cloud.
+
+## Pipeline
+
+<p align="center"><img src="docs/images/pipeline_overview.png" width="800" alt="PIG pipeline overview"></p>
+<p align="center"><sub>Original PIG pipeline (adapted from Ferreira et al., 2026).</sub></p>
+
+## Evaluation
+
+All experiments ran on the `ball` dataset. The original CPU output is the reference for both correctness and timing.
+
+### Performance
+
+| Stage | CPU (ms) | GPU (ms) |
+|---|---:|---:|
+| Pre-processing | 65.2 | 26.8 |
+| Point cloud generation | 255.8 | 128.1 |
+| Plenoptic rendering | 548.3 | 36.5 |
+| Post-processing | 844.0 | 101.7 |
+| **Total** | **1713.4** | **293.0** |
+
+<!-- TODO: add a short note explaining what the CPU baseline is for the rendering and pre-processing rows (the report says rendering was already GPU-based and pre-processing was kept on CPU in the original prototype). -->
+
+### Correctness
+
+| Stage compared against CPU output | PSNR |
+|---|---:|
+| Post-processing | ~33.9 dB |
+| Point cloud generation (post-processing disabled on both) | ~31 dB |
+
+The residual difference most likely comes from the ordering of projected points, which is sequential on the CPU and unordered on the GPU. Using float vs double precision and stream compaction did not remove it.
+
+### Kernel profiling (Nsight)
+
+| Kernel | Occupancy | Observation |
+|---|---:|---|
+| Projection / scatter | 82.3% | memory-bound, memory dependency dominates stalls |
+| Crack filtering | 88.6% | L2 cache utilization 97%, close to memory-bandwidth saturation |
+| Multi-view registration | 86.7% | low arithmetic cost, memory dependency dominates stalls |
+
+### Multi-view results
+
+Execution time of the multi-view pipeline (3 cameras):
+
+| Stage | Time (ms) |
+|---|---:|
+| Multi-view point cloud generation (GPU) | 605.8 |
+| Multi-view registration (GPU) | 46.4 |
+| Plenoptic rendering | 61.0 |
+| Post-processing (GPU) | 112.1 |
+| **Total** | **825.3** |
+
+The extra runtime comes from processing several cameras; the goal of this stage was geometric completeness rather than speed.
+
+Quality metrics:
+
+| Metric | Value |
+|---|---:|
+| Recovered pixels | 350,023 |
+| Recovery ratio (recovered / invalid in single view) | 5.16% |
+| Valid pixel density, single-view | 53.98% |
+| Valid pixel density, multi-view | 56.23% |
+
+| Recovered pixels | Overlay on the multi-view result |
+|:---:|:---:|
+| ![recovered pixels](docs/images/recovered_pixels.jpg) | ![overlay](docs/images/recovered_overlay.jpg) |
+
+## Limitations and future work
+
+- Evaluation uses a **single dataset** (`ball`), where most invalid pixels belong to the background, so the recovery ratio is modest. More complex scenes and higher resolutions are needed to generalize the results.
+- The GPU point cloud stage does not reproduce the CPU output exactly (see PSNR above).
+- The **duplicate-point filtering** kernel in multi-view registration is prepared (GPU validity mask) but not yet enabled in the final pipeline.
+- Both new stages are memory-bound: memory-access optimization is the main direction for further speedups.
+
+## Documentation
+
+- [Project report](docs/GPU_Redesign_of_PIG_report.pdf): *PIG: GPU Redesign of a Plenoptic Imaging Pipeline and Extension to Multi-View Reconstruction* (23 pages).
+- [Presentation slides](docs/GPU_Redesign_of_PIG_slides.pdf) (12 slides).
+
+## Build and run
+
+<!-- TODO: paste here the build guide from the original repository, then fix:
+  - remove the personal path (C:\Users\Frbre\...) and use a generic one
+  - use one executable name consistently (pig.exe vs pig_cpp.exe)
+  - document the flag that switches between CPU and GPU pipelines
+  - state requirements: CUDA toolkit version, GPU used (GTX 1080 Ti, compute capability 6.1)
+-->
+
+*The instructions below are adapted from the original PIG repository.*
+
+(original guide)
+
+## License and acknowledgements
+
+Original PIG code and the figures marked "adapted from" belong to their authors (see Credits). Thanks to Prof. Daniele Bonatto and Brenno Ribeiro Ferreira for their supervision and guidance.
 
 ## Installation
 
