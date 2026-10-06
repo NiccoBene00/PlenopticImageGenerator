@@ -126,13 +126,13 @@ Quality metrics:
 - [Project report](docs/GPU_Redesign_of_PIG_report.pdf): *PIG: GPU Redesign of a Plenoptic Imaging Pipeline and Extension to Multi-View Reconstruction* (23 pages).
 - [Presentation slides](docs/GPU_Redesign_of_PIG_slides.pdf) (12 slides).
 
-## Build and run
-
-*The instructions below are adapted from the original PIG repository.*
-
 ## License and acknowledgements
 
 Original PIG code and the figures marked "adapted from" belong to their authors (see Credits). Thanks to Prof. Daniele Bonatto and Brenno Ribeiro Ferreira for their supervision and guidance.
+
+## Build and run
+
+*The instructions below are adapted from the original PIG repository.*
 
 ## Installation
 
