@@ -268,7 +268,7 @@ To automate this, you can set up these arguments in Visual Studio so that you ca
         "--config",
         "config/pig_default.json",
         "--output",
-        "C:\\Users\\Frbre\\Documents\\GitHub\\pig_cpp\\results\\plenoptic.png"
+        "C:\\Users\\<path-to-result>\\plenoptic.png"
       ]
     }
 }
