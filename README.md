@@ -11,7 +11,7 @@ CUDA/C++ redesign of a plenoptic image generation pipeline for **Integral Imagin
 
 | ~5.8x | ~34 dB | ~350k px |
 |:---:|:---:|:---:|
-| end-to-end speedup<br>(1713 ms → 293 ms) | PSNR of GPU vs CPU output<br>(post-processing stage) | pixels recovered by multi-view<br>(disocclusion recovery) |
+| end-to-end total pipeline speedup<br>(1713 ms → 293 ms) | PSNR of GPU vs CPU output<br>(post-processing stage) | pixels recovered by multi-view<br>(disocclusion recovery) |
 
 Measured on the `ball` dataset through an NVIDIA GTX 1080 Ti.
 
